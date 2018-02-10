@@ -1,9 +1,0 @@
-* {
-  padding: 0px;
-  margin: 0px;
-}
-
-#container {
-  width: window.innerWidth - 100;
-  height: window.innerHeight - 200;
-}

@@ -2,7 +2,7 @@
   "name": "enlighten",
   "version": "1.0.0",
   "description": "a game made for the KSU spring 2018 game jam",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,8 +20,10 @@
   },
   "homepage": "https://github.com/d526f861/enlighten#readme",
   "dependencies": {
+    "countryjs": "^1.8.0",
     "d3": "^4.13.0",
     "datamaps": "^0.5.8",
+    "express": "^4.16.2",
     "topojson": "^3.0.2"
   }
 }
