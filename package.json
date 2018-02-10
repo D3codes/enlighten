@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/d526f861/enlighten/issues"
   },
-  "homepage": "https://github.com/d526f861/enlighten#readme"
+  "homepage": "https://github.com/d526f861/enlighten#readme",
+  "dependencies": {
+    "datamaps": "^0.5.8"
+  }
 }
