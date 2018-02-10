@@ -1,0 +1,97 @@
+{
+  "Congregation 1": {
+    "prereqs": [],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Congregation 2": {
+    "prereqs": ["Congregation 1"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Congregation 3": {
+    "prereqs": ["Door to Door 3", "Congregation 2"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Door to Door 1": {
+    "prereqs": ["Congregation 1"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Door to Door 2": {
+    "prereqs": ["Door to Door 1"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Door to Door 3": {
+    "prereqs": ["Door to Door 2", "Congregation 2"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Missionaries 1": {
+    "prereqs": ["Door to Door 3"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Missionaries 2": {
+    "prereqs": ["Missionaries 1", "Radio 1"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Missionaries 3": {
+    "prereqs": ["Missionaries 2", "Congregation 3", "Radio 2"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Print 1": {
+    "prereqs": ["Door to Door 2"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Print 2": {
+    "prereqs": ["Print 2"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Print 3": {
+    "prereqs": ["Print 2", "Missionaries 1"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Radio 1": {
+    "prereqs": ["Print 2"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Radio 2": {
+    "prereqs": ["Radio 1", "Print 3"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Radio 3": {
+    "prereqs": ["Radio 2"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Televangelism 1": {
+    "prereqs": ["Radio 2"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Televangelism 2": {
+    "prereqs": ["Televangelism 1", "Radio 3", "Print 3"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Televangelism 3": {
+    "prereqs": ["Televangilism 2"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  },
+  "Divine Revelation": {
+    "prereqs": ["Congregation 3", "Door to Door 3", "Missionaries 3", "Print 3", "Radio 3", "Televangelism 3"],
+    "probOccur": 0.01,
+    "probSpread": 0.05
+  }
+}
