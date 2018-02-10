@@ -1,0 +1,257 @@
+{
+  "AL": {
+    "name": "Alabama",
+    "population": "4863300",
+    "borders": ["MS", "TN", "GA", "FL"]
+  },
+  "AK": {
+    "name": "Alaska",
+    "population": "741894",
+    "borders": []
+  },
+  "AZ": {
+    "name": "Arizona",
+    "population": "6931071",
+    "borders": ["CA", "NV", "UT", "NM"]
+  },
+  "AR": {
+    "name": "Arkansas",
+    "population": "2988248",
+    "borders": ["LA", "TX", "OK", "MO", "TN", "MS"]
+  },
+  "CA": {
+    "name": "California",
+    "population": "39250017",
+    "borders": ["AZ", "NV", "OR"]
+  },
+  "CO": {
+    "name": "Colorado",
+    "population": "5540545",
+    "borders": ["UT", "WY", "NE", "KS", "OK", "NM"]
+  },
+  "CT": {
+    "name": "Connecticut",
+    "population": "3576452",
+    "borders": ["NY", "MA", "RI"]
+  },
+  "DE": {
+    "name": "Delaware",
+    "population": "952065",
+    "borders": ["MD", "PA", "NJ"]
+  },
+  "FL": {
+    "name": "Florida",
+    "population": "20612439",
+    "borders": ["GA", "AL"]
+  },
+  "GA": {
+    "name": "Georgia",
+    "population": "10310371",
+    "borders": ["FL", "AL", "TN", "NC", "SC"]
+  },
+  "HI": {
+    "name": "Hawaii",
+    "population": "1428557",
+    "borders": []
+  },
+  "ID": {
+    "name": "Idaho",
+    "population": "1683140",
+    "borders": ["OR", "WA", "MT", "WY", "UT", "NV"]
+  },
+  "IL": {
+    "name": "Illinois",
+    "population": "12801539",
+    "borders": ["MO", "IA", "WI", "IN", "KY"]
+  },
+  "IN": {
+    "name": "Indiana",
+    "population": "6633053",
+    "borders": ["IL", "MI", "OH", "KY"]
+  },
+  "IA": {
+    "name": "Iowa",
+    "population": "3134693",
+    "borders": ["NE", "SD", "MN", "WI", "IL", "MO"]
+  },
+  "KS": {
+    "name": "Kansas",
+    "population": "2907289",
+    "borders": ["NE", "MO", "OK", "CO"]
+  },
+  "KY": {
+    "name": "Kentucky",
+    "population": "4436974",
+    "borders": ["MO", "IL", "IN", "OH", "WV", "VA", "TN"]
+  },
+  "LA": {
+    "name": "Louisiana",
+    "population": "4681666",
+    "borders": ["TX", "AR", "MS"]
+  },
+  "ME": {
+    "name": "Maine",
+    "population": "1331479",
+    "borders": ["NH"]
+  },
+  "MD": {
+    "name": "Maryland",
+    "population": "6016447",
+    "borders": ["VA", "WV", "PA", "DE", "DC"]
+  },
+  "MA": {
+    "name": "Massachusetts",
+    "population": "6811779",
+    "borders": ["NY", "VT", "NH", "RI", "CT"]
+  },
+  "MI": {
+    "name": "Michigan",
+    "population": "9928300",
+    "borders": ["WI", "OH", "IN"]
+  },
+  "MN": {
+    "name": "Minnesota",
+    "population": "5519952",
+    "borders": ["IA", "SD", "ND", "WI"]
+  },
+  "MS": {
+    "name": "Mississippi",
+    "population": "2988726",
+    "borders": ["LA", "AR", "TN", "AL"]
+  },
+  "MO": {
+    "name": "Missouri",
+    "population": "6093000",
+    "borders": ["KS", "NE", "IA", "IL", "KY", "TN", "AR", "OK"]
+  },
+  "MT": {
+    "name": "Montana",
+    "population": "1042520",
+    "borders": ["ID", "WY", "SD", "ND"]
+  },
+  "NE": {
+    "name": "Nebraska",
+    "population": "1907116",
+    "borders": ["SD", "IA", "MO", "KS", "CO", "WY"]
+  },
+  "NV": {
+    "name": "Nevada",
+    "population": "2940058",
+    "borders": ["CA", "OR", "ID", "UT", "AZ"]
+  },
+  "NH": {
+    "name": "New Hampshire",
+    "population": "1334795",
+    "borders": ["VT", "ME", "MA"]
+  },
+  "NJ": {
+    "name": "New Jersey",
+    "population": "8944469",
+    "borders": ["DE", "PA", "NY"]
+  },
+  "NM": {
+    "name": "New Mexico",
+    "population": "2081015",
+    "borders": ["AZ", "CO", "OK", "TX"]
+  },
+  "NY": {
+    "name": "New York",
+    "population": "19745289",
+    "borders": ["PA", "NJ", "CT", "MA", "VT"]
+  },
+  "NC": {
+    "name": "North Carolina",
+    "population": "10146788",
+    "borders": ["SC", "GA", "TN", "VA"]
+  },
+  "ND": {
+    "name": "North Dakota",
+    "population": "757952",
+    "borders": ["SD", "MT", "MN"]
+  },
+  "OH": {
+    "name": "Ohio",
+    "population": "11614373",
+    "borders": ["IN", "MI", "PA", "WV", "KY"]
+  },
+  "OK": {
+    "name": "Oklahoma",
+    "population": "3923561",
+    "borders": ["TX", "NM", "CO", "KS", "MO", "AR"]
+  },
+  "OR": {
+    "name": "Oregon",
+    "population": "4093465",
+    "borders": ["WA", "ID", "NV", "CA"]
+  },
+  "PA": {
+    "name": "Pennsylvania",
+    "population": "12784227",
+    "borders": ["MD", "WV", "OH", "NY", "NJ", "DE"]
+  },
+  "RI": {
+    "name": "Rhode Island",
+    "population": "1056426",
+    "borders": ["CT", "MA"]
+  },
+  "SC": {
+    "name": "South Carolina",
+    "population": "4961119",
+    "borders": ["GA", "NC"]
+  },
+  "SD": {
+    "name": "South Dakota",
+    "population": "865454",
+    "borders": ["NE", "WY", "MT", "ND", "MN", "IA"]
+  },
+  "TN": {
+    "name": "Tennessee",
+    "population": "6651194",
+    "borders": ["AR", "MO", "KY", "VA", "NC", "GA", "AL", "MS"]
+  },
+  "TX": {
+    "name": "Texas",
+    "population": "27862596",
+    "borders": ["NM", "OK", "AR", "LA"]
+  },
+  "UT": {
+    "name": "Utah",
+    "population": "3051217",
+    "borders": ["AZ", "NV", "ID", "WY", "CO"]
+  },
+  "VT": {
+    "name": "Vermont",
+    "population": "624594",
+    "borders": ["NY", "MA", "NH"]
+  },
+  "VA": {
+    "name": "Virginia",
+    "population": "8411808",
+    "borders": ["NC", "TN", "KY", "WV", "MD", "DC"]
+  },
+  "WA": {
+    "name": "Washington",
+    "population": "7288000",
+    "borders": ["OR", "ID"]
+  },
+  "WV": {
+    "name": "West Virginia",
+    "population": "1831102",
+    "borders": ["VA", "KY", "OH", "PA", "MD"]
+  },
+  "WI": {
+    "name": "Wisconsin",
+    "population": "5778708",
+    "borders": ["IL", "IA", "MN", "MI"]
+  },
+  "WY": {
+    "name": "Wyoming",
+    "population": "585501",
+    "borders": ["CO", "UT", "ID", "MT", "SD", "NE"]
+  },
+  "DC": {
+    "name": "Washington D.C.",
+    "population": "681170",
+    "borders": ["VA", "MD"]
+  }
+}
