@@ -4,6 +4,7 @@ let blessings = 0
 let totalPopulation = 323145790
 let totalConverts = 0
 let game_state = 'start'
+let canvasHeight = 100
 let states = []
 let evangelism = {}
 let methods = [
@@ -45,13 +46,12 @@ let methods = [
 ]
 
 function setup() {
-  let canvasHeight = 100
   let container = createDiv('')
-  container.id('container')
+  container.id('map')
   container.style('width', `${window.innerWidth}`)
   container.style('height', `${window.innerHeight - canvasHeight}`)
   datamap = new Datamap({
-    element: document.getElementById('container'),
+    element: document.getElementById('map'),
     scope: 'usa',
     done: function(map) {map.svg.selectAll('.datamaps-subunit').on('click', mapClicked)},
     fills: {
@@ -62,7 +62,10 @@ function setup() {
     }
   })
 
-  createCanvas(window.innerWidth, canvasHeight)
+  this.canvas = createCanvas(window.innerWidth, window.innerHeight)
+  this.canvas.id('canvas')
+  this.popup = createGraphics(500, 500)
+  this.infoBar = createGraphics(window.innerWidth, canvasHeight)
 
   fetch('states.json').then((res) => {
     return res.json()
@@ -96,6 +99,9 @@ function update() {
   }
   blessings += ceil(map(converts, 0, totalPopulation, converts, 1)*map(converts-totalConverts, 0, totalPopulation-totalConverts, 0, 1))
   totalConverts = converts
+
+  updateInfoBar()
+  updatePopup()
 }
 
 function render() {
@@ -107,11 +113,39 @@ function render() {
   }
   datamap.updateChoropleth(loc)
 
-  background(255)
-  fill(0)
-  textAlign(CENTER, CENTER)
-  text(`Total Enlightened: ${totalConverts}`, 500, 30)
-  text(`Blessings: ${blessings}`, 500, 50)
+
+  if(game_state === 'heathens' || game_state === 'religion' || game_state === 'popup') {
+    this.canvas.style('z-index', '20')
+    image(this.popup, window.innerWidth/2-250, 200)
+  } else {
+    this.canvas.style('z-index', '5')
+  }
+  image(this.infoBar, 0, window.innerHeight-canvasHeight)
+}
+
+function updateInfoBar() {
+  this.infoBar.background(255, 255, 255)
+  this.infoBar.fill(0, 0, 0)
+  this.infoBar.textAlign(CENTER, CENTER)
+  this.infoBar.text('Religion', window.innerWidth/5, 40)
+  this.infoBar.text(`Total Enlightened: ${totalConverts}`, window.innerWidth/2, 30)
+  this.infoBar.text(`Blessings: ${blessings}`, window.innerWidth/2, 50)
+  this.infoBar.text('Heathens', 4*window.innerWidth/5, 40)
+}
+
+function updatePopup() {
+  this.popup.background(51)
+}
+
+function mouseClicked() {
+  if(mouseY < window.innerHeight && mouseY > window.innerHeight - canvasHeight) {
+    if(mouseX < window.innerWidth && mouseX > window.innerWidth - 200) {
+      game_state = 'heathens'
+    }
+    if(mouseX < 200 && mouseX > 0) {
+      game_state = 'religion'
+    }
+  }
 }
 
 function mapClicked(geography) {
