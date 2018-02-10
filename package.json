@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/d526f861/enlighten#readme",
   "dependencies": {
-    "datamaps": "^0.5.8"
+    "d3": "^4.13.0",
+    "datamaps": "^0.5.8",
+    "topojson": "^3.0.2"
   }
 }
