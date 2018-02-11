@@ -47,6 +47,36 @@ let methods = [
   }
 ]
 
+let dampeners = {
+  christianity: {
+    wordOfMouth: 0,
+    media: 0,
+    deconversion: 0
+  },
+  judaism: {
+    wordOfMouth: 0,
+    media: 0,
+    deconversion: 0
+  },
+  islam: {
+    wordOfMouth: 0,
+    media: 0,
+    deconversion: 0
+  },
+  scientology: {
+    wordOfMouth: 0,
+    media: 0,
+    deconversion: 0
+  }
+}
+
+let resistances = {
+  christianity: 1,
+  judaism: 1,
+  islam: 1,
+  scientology: 1
+}
+
 function setup() {
   let container = createDiv('')
   container.id('map')
@@ -87,7 +117,6 @@ function setup() {
     evangelism['Congregation 1'].state = 'bought'
     setMethodStates(evangelism)
   })
-
 }
 
 function draw() {
@@ -98,8 +127,19 @@ function draw() {
 function update() {
   if(states.length === 0) return
 
+  let percentConverted = map(totalConverts, 0, totalPopulation, 0, 1)
+  for(religion in dampeners) {
+    if(random() < percentConverted) {
+      if(random() < 0.5) religion.wordOfMouth += 0.001
+      else religion.media += 0.001
+    }
+    if(percentConverted > 0.5 && random() < percentConverted) {
+      religion.deconversion += random(totalConverts*percentConverted)
+    }
+  }
+
   for(let i = 0; i < convertedStates.length; i++) {
-    random(states).spread(convertedStates[i], methods)
+    random(states).spread(convertedStates[i], methods, dampeners, resistances)
   }
 
   let converts = 0
@@ -126,13 +166,9 @@ function render() {
   datamap.updateChoropleth(loc)
 
 
-  if(game_state === 'heathens' || game_state === 'religion' || game_state === 'evangelism' || game_state === 'resistances') {
-    this.canvas.style('z-index', '20')
-    image(this.popup, window.innerWidth/2-this.popup.width/2, 200)
-  } else {
-    image(this.popup, window.innerWidth/2-this.popup.width/2, 200)
-    this.canvas.style('z-index', '5')
-  }
+  if(game_state === 'heathens' || game_state === 'religion' || game_state === 'evangelism' || game_state === 'resistances') this.canvas.style('z-index', '20')
+  else this.canvas.style('z-index', '5')
+  image(this.popup, window.innerWidth/2-this.popup.width/2, 200)
   image(this.infoBar, 0, window.innerHeight-canvasHeight)
 }
 
@@ -214,6 +250,10 @@ function updatePopup() {
 
       break;
 
+    case 'heathens':
+
+    break
+
     default:
       this.popup.background(255)
       return
@@ -238,18 +278,18 @@ function updatePopup() {
 function mouseClicked() {
   if(mouseY < window.innerHeight && mouseY > window.innerHeight - 100) {
     if(mouseX < 4*window.innerWidth/5 + 200 && mouseX > 4*window.innerWidth/5 - 200) {
-      last_state = game_state
+      if(game_state === 'start' || game_state === 'play') last_state = game_state
       game_state = 'heathens'
       return
     }
     if(mouseX < window.innerWidth/5 + 200 && mouseX > window.innerWidth/5 - 200) {
-      last_state = game_state
+      if(game_state === 'start' || game_state === 'play') last_state = game_state
       game_state = 'religion'
       return
     }
   }
 
-  if(game_state === 'religion' || game_state === 'evangelism' || game_state === 'resistances') {
+  if(game_state === 'religion' || game_state === 'evangelism' || game_state === 'resistances'  || game_state === 'heathens') {
     if(mouseY > window.innerHeight/2+this.popup.height/2 || mouseY < window.innerHeight/2-this.popup.height/2 ||
       mouseX < window.innerWidth/2-this.popup.width/2 || mouseX > window.innerWidth/2+this.popup.width/2){
         game_state = last_state

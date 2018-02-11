@@ -8,7 +8,7 @@ class State {
     this.converted = 0
   }
 
-  spread(state, methods) {
+  spread(state, methods, dampeners, resistances) {
     if(this.converted === this.population) return
     if(state.converted === 0) return
 
@@ -17,9 +17,34 @@ class State {
     if(this.sid === state.sid) loopNum = methods.length
     else if(this.borders.indexOf(state.sid) > -1) loopNum = 5
     for(let i = 0; i < loopNum; i++) {
+      let probSpread = methods[i].probSpread
       if(random() < methods[i].probOccur) {
-        people += ceil(random(map(this.converted / methods[i].probSpread, 0, this.population / methods[i].probSpread, 1, this.population - this.converted)))
-        //people += ceil(random(map(this.population-this.converted, 0, this.population, this.population-this.converted, 1)) * methods[i].probSpread)
+        switch(i) {
+          case 1:
+          case 3:
+          case 4:
+            probSpread -= dampeners.christianity.media*resistances.christianity
+            probSpread -= dampeners.judaism.media*resistances.judaism
+            probSpread -= dampeners.islam.media*resistances.islam
+            probSpread -= dampeners.scientology.media*resistances.scientology
+            break
+          case 0:
+          case 2:
+          case 5:
+          probSpread -= dampeners.christianity.wordOfMouth*resistances.christianity
+          probSpread -= dampeners.judaism.wordOfMouth*resistances.judaism
+          probSpread -= dampeners.islam.wordOfMouth*resistances.islam
+          probSpread -= dampeners.scientology.wordOfMouth*resistances.scientology
+            break
+        }
+        let totalDeconversion = 0
+        totalDeconversion += dampeners.christianity.deconversion*resistances.christianity
+        totalDeconversion += dampeners.judaism.deconversion*resistances.judaism
+        totalDeconversion += dampeners.islam.deconversion*resistances.islam
+        totalDeconversion += dampeners.scientology.deconversion*resistances.scientology
+
+        people += ceil(random(map(this.converted / probSpread, 0, this.population / probSpread, 1, this.population - this.converted)))
+        people -= floor(random(totalDeconversion))
       }
     }
     this.converted += people
