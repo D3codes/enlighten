@@ -145,8 +145,8 @@ function update() {
     let percentConverted = map(totalConverts, 0, totalPopulation, 0, 1)
     for(religion in dampeners) {
       if(random() < percentConverted) {
-        if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += 0.001
-        else if(dampeners[religion].media < 0.8) dampeners[religion].media += 0.001
+        if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += 0.0000001
+        else if(dampeners[religion].media < 0.8) dampeners[religion].media += 0.0000001
       }
       if(percentConverted > 0.4) {
         dampeners[religion].deconversion += floor(random(1, 3))
@@ -325,6 +325,7 @@ function mouseClicked() {
         game_state = last_state
         return
       }
+    if(game_state === 'heathens') return
     if(mouseY < window.innerHeight/2+this.popup.height/2-50 && mouseY > window.innerHeight/2+this.popup.height/2-100) {
       if(mouseX < window.innerWidth/2+this.popup.width/2 && mouseX > window.innerWidth/2+this.popup.width/2 - this.popup.width/3) {
         game_state = 'resistances'
