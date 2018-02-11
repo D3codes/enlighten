@@ -129,19 +129,6 @@ function draw() {
 function update() {
   if(states.length === 0) return
 
-  let percentConverted = map(totalConverts, 0, totalPopulation, 0, 1)
-  for(religion in dampeners) {
-    if(random() < percentConverted) {
-      if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += 0.001
-      else if(dampeners[religion].media < 0.8) dampeners[religion].media += 0.001
-    }
-    if(percentConverted > 0.4) {
-      dampeners[religion].deconversion += floor(random(1, 3))
-    } else if(percentConverted < 0.1 && dampeners[religion].deconversion > 0) {
-      dampeners[religion].deconverstion -= floor(random(1, 3))
-    }
-  }
-
   for(let i = 0; i < convertedStates.length; i++) {
     random(states).spread(convertedStates[i], methods, dampeners, resistances)
   }
@@ -153,7 +140,21 @@ function update() {
       convertedStates.push(states[i])
     }
   }
-  if(converts > totalConverts) blessings++
+  if(converts > totalConverts) {
+    blessings++
+    let percentConverted = map(totalConverts, 0, totalPopulation, 0, 1)
+    for(religion in dampeners) {
+      if(random() < percentConverted) {
+        if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += 0.001
+        else if(dampeners[religion].media < 0.8) dampeners[religion].media += 0.001
+      }
+      if(percentConverted > 0.4) {
+        dampeners[religion].deconversion += floor(random(1, 3))
+      } else if(percentConverted < 0.1 && dampeners[religion].deconversion > 0) {
+        dampeners[religion].deconverstion -= floor(random(1, 3))
+      }
+    }
+  }
   totalConverts = converts
 
   updateInfoBar()
