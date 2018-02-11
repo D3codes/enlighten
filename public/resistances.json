@@ -1,0 +1,114 @@
+{
+  "Christianity 1": {
+    "resistance": 0.75,
+    "x": 120,
+    "y": 150,
+    "cost": 300,
+    "state": "available"
+  },
+  "Christianity 2": {
+    "resistance": 0.5,
+    "x": 150,
+    "y": 218,
+    "cost": 1000,
+    "state": "unavailable"
+  },
+  "Christianity 3": {
+    "resistance": 0.25,
+    "x": 120,
+    "y": 286,
+    "cost": 2500,
+    "state": "unavailable"
+  },
+  "Christianity 4": {
+    "resistance": 0.1,
+    "x": 150,
+    "y": 354,
+    "cost": 6000,
+    "state": "unavailable"
+  },
+  "Judaism 1": {
+    "resistance": 0.75,
+    "x": 323,
+    "y": 150,
+    "cost": 300,
+    "state": "available"
+  },
+  "Judaism 2": {
+    "resistance": 0.5,
+    "x": 353,
+    "y": 218,
+    "cost": 1000,
+    "state": "unavailable"
+  },
+  "Judaism 3": {
+    "resistance": 0.25,
+    "x": 323,
+    "y": 286,
+    "cost": 2500,
+    "state": "unavailable"
+  },
+  "Judaism 4": {
+    "resistance": 0.1,
+    "x": 353,
+    "y": 354,
+    "cost": 6000,
+    "state": "unavailable"
+  },
+  "Islam 1": {
+    "resistance": 0.75,
+    "x": 485,
+    "y": 150,
+    "cost": 300,
+    "state": "available"
+  },
+  "Islam 2": {
+    "resistance": 0.5,
+    "x": 515,
+    "y": 218,
+    "cost": 1000,
+    "state": "unavailable"
+  },
+  "Islam 3": {
+    "resistance": 0.25,
+    "x": 485,
+    "y": 286,
+    "cost": 2500,
+    "state": "unavailable"
+  },
+  "Islam 4": {
+    "resistance": 0.1,
+    "x": 515,
+    "y": 354,
+    "cost": 6000,
+    "state": "unavailable"
+  },
+  "Scientology 1": {
+    "resistance": 0.75,
+    "x": 675,
+    "y": 150,
+    "cost": 300,
+    "state": "available"
+  },
+  "Scientology 2": {
+    "resistance": 0.5,
+    "x": 705,
+    "y": 218,
+    "cost": 1000,
+    "state": "unavailable"
+  },
+  "Scientology 3": {
+    "resistance": 0.25,
+    "x": 675,
+    "y": 286,
+    "cost": 2500,
+    "state": "unavailable"
+  },
+  "Scientology 4": {
+    "resistance": 0.1,
+    "x": 705,
+    "y": 354,
+    "cost": 6000,
+    "state": "unavailable"
+  }
+}

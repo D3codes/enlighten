@@ -9,6 +9,7 @@ let canvasHeight = 100
 let states = []
 let convertedStates = []
 let evangelism = {}
+let resists = {}
 let methods = [
   {
     method: "Divine Revelation",
@@ -119,6 +120,12 @@ function setup() {
     methods[6].probOccur = evangelism['Congregation 1'].probOccur
     methods[6].probSpread = evangelism['Congregation 1'].probSpread
   })
+
+  fetch('resistances.json').then((res) => {
+    return res.json()
+  }).then((data) => {
+    resists = data
+  })
 }
 
 function draw() {
@@ -221,9 +228,7 @@ function updatePopup() {
       this.popup.background(220)
       for(let method in evangelism) {
         polygon(evangelism[method].x, evangelism[method].y, 40, 8, evangelism[method].state)
-      }
 
-      for(method in evangelism) {
         let hoverOver = false
         if(mouseX < evangelism[method].x+40+window.innerWidth/2-400 && mouseX > evangelism[method].x-40+window.innerWidth/2-400 &&
           mouseY < evangelism[method].y+window.innerHeight/2-250 && mouseY > evangelism[method].y-80+window.innerHeight/2-250) {
@@ -257,7 +262,33 @@ function updatePopup() {
       break;
     case 'resistances':
       this.popup.background(50, 50, 200)
-
+      this.popup.textSize(30)
+      this.popup.text('Christianity', 40, 50)
+      this.popup.text('Judaism', 275, 50)
+      this.popup.text('Islam', 450, 50)
+      this.popup.text('Scientology', 600, 50)
+      for(let resist in resists) {
+        polygon(resists[resist].x, resists[resist].y, 40, 8, resists[resist].state)
+        let hoverOver = false
+        if(mouseX < resists[resist].x+40+window.innerWidth/2-400 && mouseX > resists[resist].x-40+window.innerWidth/2-400 &&
+          mouseY < resists[resist].y+window.innerHeight/2-250 && mouseY > resists[resist].y-80+window.innerHeight/2-250) {
+            for(prereq of evangelism[method].prereqs) {
+              hoverOver = true
+            }
+          }
+          this.popup.noStroke()
+          this.popup.fill(0)
+          this.popup.textFont("Verdana")
+          this.popup.textAlign(CENTER, CENTER)
+          this.popup.textSize(20)
+          if(!hoverOver || resists[resist].state === 'bought') {
+            let type = resist.split(' ')[0]
+            let level = resist.split(' ')[1]
+            this.popup.text(level, resists[resist].x, resists[resist].y)
+          } else {
+            this.popup.text(resists[resist].cost, resists[resist].x, resists[resist].y)
+          }
+      }
       break;
 
     case 'heathens':
@@ -378,8 +409,22 @@ function mouseClicked() {
             }
           }
       }
+    } else if(game_state === 'resistances') {
+        for(resist in resists) {
+          if(mouseX < resists[resist].x+40+window.innerWidth/2-400 && mouseX > resists[resist].x-40+window.innerWidth/2-400 &&
+            mouseY < resists[resist].y+window.innerHeight/2-250 && mouseY > resists[resist].y-80+window.innerHeight/2-250) {
+              if(resists[resist].state === 'available' && blessings >= resists[resist].cost) {
+                resists[resist].state = 'bought'
+                blessings -= resists[resist].cost
+                resistances[resist.split(' ')[0]] = resists[resist].resistance
+                if(parseInt(resist.split(' ')[1])+1 <= 4) {
+                    resists[`${resist.split(' ')[0]} ${parseInt(resist.split(' ')[1])+1}`].state = 'available'
+                }
+              }
+            }
+          }
+      }
     }
-  }
 }
 
 function mapClicked(geography) {
