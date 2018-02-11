@@ -260,8 +260,14 @@ function updatePopup() {
         polygon(evangelism[method].x, evangelism[method].y, 40, 8, evangelism[method].state)
 
         let hoverOver = false
-        if(mouseX < evangelism[method].x+40+window.innerWidth/2-this.popup.width/2 && mouseX > evangelism[method].x-40+window.innerWidth/2-this.popup.width/2 &&
-          mouseY < evangelism[method].y+40+window.innerHeight/2-this.popup.height/2 && mouseY > evangelism[method].y-40+window.innerHeight/2-this.popup.height/2) {
+        let circle1 = {radius: 1, x: mouseX, y: mouseY}
+        let circle2 = {radius: 36, x: evangelism[method].x+window.innerWidth/2-this.popup.width/2, y: evangelism[method].y+window.innerHeight/2-this.popup.height/2}
+
+        let dx = circle1.x - circle2.x
+        let dy = circle1.y - circle2.y
+        let distance = sqrt(dx * dx + dy * dy)
+
+        if(distance < circle1.radius + circle2.radius) {
             for(prereq of evangelism[method].prereqs) {
               hoverOver = true
               this.popup.stroke(255, 0, 0)
@@ -300,12 +306,15 @@ function updatePopup() {
       for(let resist in resists) {
         polygon(resists[resist].x, resists[resist].y, 40, 8, resists[resist].state)
         let hoverOver = false
-        if(mouseX < resists[resist].x+40+window.innerWidth/2-this.popup.width/2 && mouseX > resists[resist].x-40+window.innerWidth/2-this.popup.width/2 &&
-          mouseY < resists[resist].y+40+window.innerHeight/2-this.popup.height/2 && mouseY > resists[resist].y-40+window.innerHeight/2-this.popup.height/2) {
-            for(prereq of evangelism[method].prereqs) {
-              hoverOver = true
-            }
-          }
+
+        let circle1 = {radius: 1, x: mouseX, y: mouseY}
+        let circle2 = {radius: 36, x: resists[resist].x+window.innerWidth/2-this.popup.width/2, y: resists[resist].y+window.innerHeight/2-this.popup.height/2}
+
+        let dx = circle1.x - circle2.x
+        let dy = circle1.y - circle2.y
+        let distance = sqrt(dx * dx + dy * dy)
+
+        if(distance < circle1.radius + circle2.radius) hoverOver = true
           this.popup.noStroke()
           this.popup.fill(0)
           this.popup.textFont("Verdana")
@@ -538,8 +547,13 @@ function mouseClicked() {
     }
     if(game_state === 'evangelism') {
       for(method in evangelism) {
-        if(mouseX < evangelism[method].x+40+window.innerWidth/2-this.popup.width/2 && mouseX > evangelism[method].x-40+window.innerWidth/2-this.popup.width/2 &&
-           mouseY < evangelism[method].y+40+window.innerHeight/2-this.popup.height/2 && mouseY > evangelism[method].y-40+window.innerHeight/2-this.popup.height/2) {
+        let circle1 = {radius: 1, x: mouseX, y: mouseY}
+        let circle2 = {radius: 36, x: evangelism[method].x+window.innerWidth/2-this.popup.width/2, y: evangelism[method].y+window.innerHeight/2-this.popup.height/2}
+
+        let dx = circle1.x - circle2.x
+        let dy = circle1.y - circle2.y
+        let distance = sqrt(dx * dx + dy * dy)
+        if(distance < circle1.radius + circle2.radius) {
             if(evangelism[method].state === 'available' && blessings >= evangelism[method].cost) {
               evangelism[method].state = 'bought'
               blessings -= evangelism[method].cost
@@ -578,8 +592,13 @@ function mouseClicked() {
       }
     } else if(game_state === 'resistances') {
         for(resist in resists) {
-          if(mouseX < resists[resist].x+40+window.innerWidth/2-this.popup.width/2 && mouseX > resists[resist].x-40+window.innerWidth/2-this.popup.width/2 &&
-            mouseY < resists[resist].y+40+window.innerHeight/2-this.popup.height/2 && mouseY > resists[resist].y-40+window.innerHeight/2-this.popup.height/2) {
+          let circle1 = {radius: 1, x: mouseX, y: mouseY}
+          let circle2 = {radius: 36, x: resists[resist].x+window.innerWidth/2-this.popup.width/2, y: resists[resist].y+window.innerHeight/2-this.popup.height/2}
+
+          let dx = circle1.x - circle2.x
+          let dy = circle1.y - circle2.y
+          let distance = sqrt(dx * dx + dy * dy)
+          if(distance < circle1.radius + circle2.radius) {
               if(resists[resist].state === 'available' && blessings >= resists[resist].cost) {
                 resists[resist].state = 'bought'
                 blessings -= resists[resist].cost
