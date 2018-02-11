@@ -416,7 +416,7 @@ function mouseClicked() {
               if(resists[resist].state === 'available' && blessings >= resists[resist].cost) {
                 resists[resist].state = 'bought'
                 blessings -= resists[resist].cost
-                resistances[resist.split(' ')[0]] = resists[resist].resistance
+                resistances[resist.split(' ')[0].toLowerCase()] = resists[resist].resistance
                 if(parseInt(resist.split(' ')[1])+1 <= 4) {
                     resists[`${resist.split(' ')[0]} ${parseInt(resist.split(' ')[1])+1}`].state = 'available'
                 }
