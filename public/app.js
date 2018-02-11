@@ -700,7 +700,10 @@ function mapClicked(geography) {
       if(game_state === 'start'){
         startState = states[i].name
         states[i].converted = 1
-        messageDisplayed = false
+        messageSetTime = millis()
+        messageDisplayed = true
+        message1 = "You begin your religion by having"
+        message2 = "weekly sermons in your basement"
         game_state = 'play'
       } else {
         infoState = states[i]
