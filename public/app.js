@@ -271,7 +271,7 @@ function updatePopup() {
   this.popup.textFont('IM Fell English SC')
   switch(game_state) {
     case 'religion':
-      this.popup.background(20, 160, 50)
+      this.popup.background(50, 50, 200)
       this.popup.fill(0)
       this.popup.textSize(50)
       this.popup.stroke(255, 255, 0)
@@ -333,7 +333,7 @@ function updatePopup() {
       }
       break;
     case 'resistances':
-      this.popup.background(50, 50, 200)
+      this.popup.background(20, 160, 50)
       this.popup.textSize(30)
       this.popup.text('Christianity', 40, 50)
       this.popup.text('Judaism', 275, 50)
@@ -499,11 +499,11 @@ function updatePopup() {
   this.popup.textFont('IM Fell English SC')
   this.popup.textSize(30)
   this.popup.noStroke()
-  this.popup.fill(20, 160, 50)
+  this.popup.fill(50, 50, 200)
   this.popup.rect(0, popup.height-50, popup.width/3, 50)
   this.popup.fill(220)
   this.popup.rect(popup.width/3, popup.height-50, popup.width/3, 50)
-  this.popup.fill(50, 50, 200)
+  this.popup.fill(20, 160, 50)
   this.popup.rect(2*popup.width/3, popup.height-50, popup.width/3, 50)
   this.popup.fill(0)
   this.popup.textAlign(CENTER, CENTER)
