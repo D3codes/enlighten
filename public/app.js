@@ -154,14 +154,9 @@ function update() {
     let percentConverted = map(totalConverts, 0, totalPopulation, 0, 1)
     for(religion in dampeners) {
       if(random() < percentConverted) {
-        let dampenAmount = map(percentConverted, 0, 100, 0.0000001, 0.0001)
+        let dampenAmount = map(percentConverted, 0, 1, 0.0000001, 0.0001)
         if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += dampenAmount
         else if(dampeners[religion].media < 0.8) dampeners[religion].media += dampenAmount
-      }
-      if(percentConverted > 0.4) {
-        dampeners[religion].deconversion += floor(random(1, 3))
-      } else if(percentConverted < 0.1 && dampeners[religion].deconversion > 0) {
-        dampeners[religion].deconverstion -= floor(random(1, 3))
       }
     }
   }
@@ -175,7 +170,7 @@ function render() {
   let loc = {}
   let customLabels = {}
   for(let i = 0; i < states.length; i++) {
-    let rg = map(states[i].converted, 0, states[i].population, 20, 255)
+    let rg = map(sqrt(states[i].converted), 0, sqrt(states[i].population), 20, 255)
     loc[states[i].sid] = `rgb(${rg}, ${rg}, 0)`
   }
   datamap.updateChoropleth(loc)

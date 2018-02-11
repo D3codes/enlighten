@@ -46,13 +46,6 @@ class State {
     }
     this.converted += people
 
-    let totalDeconversion = 1
-    totalDeconversion += floor(dampeners.christianity.deconversion*resistances.christianity)
-    totalDeconversion += floor(dampeners.judaism.deconversion*resistances.judaism)
-    totalDeconversion += floor(dampeners.islam.deconversion*resistances.islam)
-    totalDeconversion += floor(dampeners.scientology.deconversion*resistances.scientology)
-    this.converted = ceil(this.converted/totalDeconversion)
-
     if(this.converted > this.population) this.converted = this.population
     if(this.converted < 0) this.converted = 0
   }
