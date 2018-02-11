@@ -56,21 +56,25 @@ let methods = [
 
 let dampeners = {
   christianity: {
+    followers: "Christians",
     wordOfMouth: 0,
     media: 0,
     deconversion: 0
   },
   judaism: {
+    followers: "Jews",
     wordOfMouth: 0,
     media: 0,
     deconversion: 0
   },
   islam: {
+    followers: "Muslims",
     wordOfMouth: 0,
     media: 0,
     deconversion: 0
   },
   scientology: {
+    followers: "Scientologists",
     wordOfMouth: 0,
     media: 0,
     deconversion: 0
@@ -180,8 +184,23 @@ function update() {
     for(religion in dampeners) {
       if(random() < percentConverted) {
         let dampenAmount = map(percentConverted, 0, 1, 0.0000001, 0.0001)
-        if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += dampenAmount
-        else if(dampeners[religion].media < 0.8) dampeners[religion].media += dampenAmount
+        if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) {
+          if(dampeners[religion].wordOfMouth === 0 && messageDisplayed === false) {
+            messageDisplayed = true
+            messageSetTime = millis()
+            message1 = `${dampeners[religion].followers} are getting concerned`
+            message2 = `leaders have called for a boycot of ${religionName}`
+          }
+          dampeners[religion].wordOfMouth += dampenAmount
+        } else if(dampeners[religion].media < 0.8) {
+          if(dampeners[religion].media === 0 && messageDisplayed === false) {
+            messageDisplayed = true
+            messageSetTime = millis()
+            message1 = `${dampeners[religion].followers} are getting concerned`
+            message2 = `leaders have created anti-${religionName} advertisements`
+          }
+          dampeners[religion].media += dampenAmount
+        }
       }
     }
   }
@@ -245,7 +264,19 @@ function updateInfoBar() {
   this.infoBar.rect(4*window.innerWidth/5, 40, 100, 50)
   this.infoBar.textAlign(CENTER, CENTER)
   this.infoBar.fill(0, 0, 0)
+  if(mouseY < window.innerHeight && mouseY > window.innerHeight - 100) {
+    if(mouseX < window.innerWidth/5 + 100 && mouseX > window.innerWidth/5 - 100) {
+      this.infoBar.fill(255)
+    }
+  }
   this.infoBar.text('Enlighten', window.innerWidth/5, 40)
+
+  this.infoBar.fill(0, 0, 0)
+  if(mouseY < window.innerHeight && mouseY > window.innerHeight - 100) {
+    if(mouseX < 4*window.innerWidth/5 + 100 && mouseX > 4*window.innerWidth/5 - 100) {
+      this.infoBar.fill(255)
+    }
+  }
   this.infoBar.text('Heathens', 4*window.innerWidth/5, 40)
 }
 
@@ -254,7 +285,7 @@ function updatePopup() {
   this.popup.textFont('IM Fell English SC')
   switch(game_state) {
     case 'religion':
-      this.popup.background(20, 160, 50)
+      this.popup.background(50, 50, 200)
       this.popup.fill(0)
       this.popup.textSize(50)
       this.popup.stroke(255, 255, 0)
@@ -316,7 +347,7 @@ function updatePopup() {
       }
       break;
     case 'resistances':
-      this.popup.background(50, 50, 200)
+      this.popup.background(20, 160, 50)
       this.popup.textSize(30)
       this.popup.text('Christianity', 40, 50)
       this.popup.text('Judaism', 275, 50)
@@ -478,20 +509,43 @@ function updatePopup() {
   }
 
   if(game_state === 'heathens' || game_state === 'stateInfo' || game_state === 'new' || game_state === 'win' || game_state === 'lose') return
+
   this.popup.textFont('IM Fell English SC')
   this.popup.textSize(30)
   this.popup.noStroke()
-  this.popup.fill(20, 160, 50)
+  this.popup.fill(50, 50, 200)
   this.popup.rect(0, popup.height-50, popup.width/3, 50)
   this.popup.fill(220)
   this.popup.rect(popup.width/3, popup.height-50, popup.width/3, 50)
-  this.popup.fill(50, 50, 200)
+  this.popup.fill(20, 160, 50)
   this.popup.rect(2*popup.width/3, popup.height-50, popup.width/3, 50)
   this.popup.fill(0)
   this.popup.textAlign(CENTER, CENTER)
+
+  this.popup.fill(0)
+  if(mouseY < window.innerHeight/2+this.popup.height/2 && mouseY > window.innerHeight/2+this.popup.height/2-50) {
+    if(mouseX < window.innerWidth/2+this.popup.width/2-2*this.popup.width/3 && mouseX > window.innerWidth/2-this.popup.width/2) {
+      this.popup.fill(255)
+    }
+  }
   this.popup.text("Religion", this.popup.width/2 - this.popup.width/3, this.popup.height - 25)
+
+  this.popup.fill(0)
+  if(mouseY < window.innerHeight/2+this.popup.height/2 && mouseY > window.innerHeight/2+this.popup.height/2-50) {
+    if(mouseX < window.innerWidth/2+this.popup.width/2-this.popup.width/3 && mouseX > window.innerWidth/2+this.popup.width/2 - 2*this.popup.width/3) {
+      this.popup.fill(255)
+    }
+  }
   this.popup.text("Evangelism", this.popup.width/2, this.popup.height - 25)
+
+  this.popup.fill(0)
+  if(mouseY < window.innerHeight/2+this.popup.height/2 && mouseY > window.innerHeight/2+this.popup.height/2-50) {
+    if(mouseX < window.innerWidth/2+this.popup.width/2 && mouseX > window.innerWidth/2+this.popup.width/2 - this.popup.width/3) {
+      this.popup.fill(255)
+    }
+  }
   this.popup.text("Resistances", this.popup.width/2 + this.popup.width/3, this.popup.height - 25)
+  this.popup.fill(0)
 }
 
 let maxNameLength = 30
@@ -668,7 +722,10 @@ function mapClicked(geography) {
       if(game_state === 'start'){
         startState = states[i].name
         states[i].converted = 1
-        messageDisplayed = false
+        messageSetTime = millis()
+        messageDisplayed = true
+        message1 = "You begin your religion by having"
+        message2 = "weekly sermons in your basement"
         game_state = 'play'
       } else {
         infoState = states[i]
