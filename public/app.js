@@ -56,21 +56,25 @@ let methods = [
 
 let dampeners = {
   christianity: {
+    followers: "Christians",
     wordOfMouth: 0,
     media: 0,
     deconversion: 0
   },
   judaism: {
+    followers: "Jews",
     wordOfMouth: 0,
     media: 0,
     deconversion: 0
   },
   islam: {
+    followers: "Muslims",
     wordOfMouth: 0,
     media: 0,
     deconversion: 0
   },
   scientology: {
+    followers: "Scientologists",
     wordOfMouth: 0,
     media: 0,
     deconversion: 0
@@ -166,8 +170,23 @@ function update() {
     for(religion in dampeners) {
       if(random() < percentConverted) {
         let dampenAmount = map(percentConverted, 0, 1, 0.0000001, 0.0001)
-        if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += dampenAmount
-        else if(dampeners[religion].media < 0.8) dampeners[religion].media += dampenAmount
+        if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) {
+          if(dampenders[religion].wordOfMouth === 0) {
+            messageDisplayed = true
+            messageSetTime = millis()
+            message1 = `${dampeners[religion].followers} are getting concerned`
+            message2 = `leaders have called for a boycot of ${religionName}`
+          }
+          dampeners[religion].wordOfMouth += dampenAmount
+        } else if(dampeners[religion].media < 0.8) {
+          if(dampenders[religion].media === 0) {
+            messageDisplayed = true
+            messageSetTime = millis()
+            message1 = `${dampeners[religion].followers} are getting concerned`
+            message2 = `leaders have created anti-${relgionName} advertisements`
+          }
+          dampeners[religion].media += dampenAmount
+        }
       }
     }
   }
