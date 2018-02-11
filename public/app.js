@@ -164,6 +164,9 @@ function update() {
   }
   totalConverts = converts
 
+  if(totalPopulation === totalConverts) game_state = 'win'
+  if(totalConverts === 0 && game_state === 'play') game_state = 'lose'
+
   updateInfoBar()
   updatePopup()
 }
@@ -180,7 +183,8 @@ function render() {
 
   if(game_state === 'heathens' || game_state === 'religion' ||
     game_state === 'evangelism' || game_state === 'resistances' ||
-    game_state === 'stateInfo' || game_state === 'new') {
+    game_state === 'stateInfo' || game_state === 'new' ||
+    game_state === 'win' || game_state === 'lose') {
       this.canvas.style('z-index', '20')
     } else {
       this.canvas.style('z-index', '5')
@@ -347,7 +351,6 @@ function updatePopup() {
       break
 
     case 'new':
-      this.popup.background(210, 210, 0)
       this.popup.background(220)
       this.popup.textAlign(CENTER, CENTER)
       this.popup.textFont('IM Fell English SC')
@@ -373,12 +376,50 @@ function updatePopup() {
       this.popup.text('Continue', 400, 430)
       break
 
+    case 'win':
+      this.popup.background(200, 200, 50)
+      this.popup.textAlign(CENTER, CENTER)
+      this.popup.textFont('IM Fell English SC')
+      this.popup.textSize(50)
+      this.popup.noStroke()
+      this.popup.fill(0)
+      this.popup.text('YOU WIN!', 400, 50)
+
+      this.popup.textSize(30)
+      this.popup.text(`The entire country as reached enlightenment`, 400, 120)
+      this.popup.text(`thanks to ${religionName}!`, 400, 150)
+
+      this.popup.text('Click anywhere to play again', 400, 300)
+
+      this.popup.textSize(20)
+      this.popup.text('Created by David Freeman and Caullen Sasnett', 400, 480)
+      break
+
+    case 'lose':
+      this.popup.background(50, 50, 80)
+      this.popup.textAlign(CENTER, CENTER)
+      this.popup.textFont('IM Fell English SC')
+      this.popup.textSize(50)
+      this.popup.noStroke()
+      this.popup.fill(0)
+      this.popup.text('YOU LOSE', 400, 50)
+
+      this.popup.textSize(30)
+      this.popup.text(`The Heathens expelled ${religionName}`, 400, 120)
+      this.popup.text(`from the country`, 400, 150)
+
+      this.popup.text('Click anywhere to play again', 400, 300)
+
+      this.popup.textSize(20)
+      this.popup.text('Created by David Freeman and Caullen Sasnett', 400, 480)
+      break
+
     default:
       this.popup.background(255)
       return
   }
 
-  if(game_state === 'heathens' || game_state === 'stateInfo' || game_state === 'new') return
+  if(game_state === 'heathens' || game_state === 'stateInfo' || game_state === 'new' || game_state === 'win' || game_state === 'lose') return
   this.popup.textFont('IM Fell English SC')
   this.popup.textSize(30)
   this.popup.noStroke()
@@ -413,6 +454,11 @@ function keyTyped() {
 }
 
 function mouseClicked() {
+  if(game_state === 'win' || game_state === 'lose') {
+    location.reload()
+    return
+  }
+
   if(game_state === 'new') {
     if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
       mouseX > window.innerWidth/2-150 && mouseX < window.innerWidth/2+150){
