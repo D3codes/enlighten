@@ -372,6 +372,10 @@ function updatePopup() {
       this.popup.rect(250, 400, 300, 50)
       this.popup.fill(255)
       this.popup.text('Continue', 400, 430)
+
+      this.popup.textSize(20)
+      this.popup.fill(0)
+      this.popup.text('Created by David Freeman and Caullen Sasnett', 400, 480)
       break
 
     case 'win':
