@@ -1,49 +1,49 @@
 let datamap
-let spreadSpeed = 15
 let blessings = 0
 let startState = 'n/a'
-let totalPopulation = 323145790
+let totalPopulation = 323127513
 let totalConverts = 0
 let game_state = 'start'
 let last_state
 let canvasHeight = 100
 let states = []
+let convertedStates = []
 let evangelism = {}
 let methods = [
   {
     method: "Divine Revelation",
     probOccur: 0,
-    probSpread: 1
+    probSpread: 0
   },
   {
     method: "Missionaries",
     probOccur: 0,
-    probSpread: 0.0001
+    probSpread: 0
   },
   {
     method: "Televangelism",
     probOccur: 0,
-    probSpread: 0.01
+    probSpread: 0
   },
   {
     method: "Radio",
     probOccur: 0,
-    probSpread: 0.01
+    probSpread: 0
   },
   {
     method: "Door to Door",
     probOccur: 0,
-    probSpread: 0.005
+    probSpread: 0
   },
   {
     method: "Print",
     probOccur: 0,
-    probSpread: 0.01
+    probSpread: 0
   },
   {
     method: "Congregation",
-    probOccur: 0.1,
-    probSpread: 0.01
+    probOccur: 0.21,
+    probSpread: 0.15
   }
 ]
 
@@ -97,13 +97,17 @@ function draw() {
 
 function update() {
   if(states.length === 0) return
-  for(let i = 0; i < spreadSpeed; i++) {
-    random(states).spread(random(states), methods)
+
+  for(let i = 0; i < convertedStates.length; i++) {
+    random(states).spread(convertedStates[i], methods)
   }
 
   let converts = 0
   for(let i = 0; i < states.length; i++) {
     converts += states[i].converted
+    if(states[i].converted > 0 && !convertedStates.includes(states[i])) {
+      convertedStates.push(states[i])
+    }
   }
   blessings += ceil(map(converts, 0, totalPopulation, converts, 1)*map(converts-totalConverts, 0, totalPopulation-totalConverts, 0, 1))
   totalConverts = converts
@@ -147,8 +151,8 @@ function updateInfoBar() {
   this.infoBar.textSize(30)
   this.infoBar.textAlign(CENTER, CENTER)
   this.infoBar.text('Religion', window.innerWidth/5, 40)
-  this.infoBar.text(`Total Enlightened: ${totalConverts}`, window.innerWidth/2, 30)
-  this.infoBar.text(`Blessings: ${blessings}`, window.innerWidth/2, 60)
+  this.infoBar.text(`Total Enlightened: ${totalConverts.toLocaleString()}`, window.innerWidth/2, 30)
+  this.infoBar.text(`Blessings: ${blessings.toLocaleString()}`, window.innerWidth/2, 60)
   this.infoBar.text('Heathens', 4*window.innerWidth/5, 40)
 }
 
@@ -163,7 +167,7 @@ function updatePopup() {
       this.popup.text('Religion', 50, 50)
 
       this.popup.textSize(30)
-      this.popup.text(`Total Population: ${totalPopulation}`, 50, 100)
+      this.popup.text(`Total Population: ${totalPopulation.toLocaleString()}`, 50, 100)
       this.popup.text(`Start State: ${startState}`, 50, 150)
       break;
     case 'evangelism':
@@ -269,8 +273,8 @@ function mouseClicked() {
             if(evangelism[method].state === 'available' && blessings >= evangelism[method].cost) {
               evangelism[method].state = 'bought'
               blessings -= evangelism[method].cost
-              let index = 0
-              switch(method.split(' ')[1]) {
+              let index = -1
+              switch(method.split(' ')[0]) {
                 case 'Congregation':
                   index = 6
                   break;

@@ -23,5 +23,6 @@ class State {
       }
     }
     this.converted += people
+    if(this.converted > this.population) this.converted = this.population
   }
 }
