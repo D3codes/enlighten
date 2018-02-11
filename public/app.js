@@ -162,8 +162,8 @@ function update() {
   }
   totalConverts = converts
 
-  if(totalPopulation === totalConverts) game_state === 'win'
-  if(totalConverts === 0 && game_state === 'play') game_state === 'lose'
+  if(totalPopulation === totalConverts) game_state = 'win'
+  if(totalConverts === 0 && game_state === 'play') game_state = 'lose'
 
   updateInfoBar()
   updatePopup()
@@ -453,7 +453,7 @@ function keyTyped() {
 
 function mouseClicked() {
   if(game_state === 'win' || game_state === 'lose') {
-    game_state = 'new'
+    location.reload()
     return
   }
 
