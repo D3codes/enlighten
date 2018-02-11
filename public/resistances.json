@@ -5,7 +5,7 @@
     "y": 150,
     "cost": 250,
     "state": "available",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You convert a Christian^friend to your religion"
   },
   "Christianity 2": {
     "resistance": 0.2,
@@ -13,7 +13,7 @@
     "y": 218,
     "cost": 500,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "A local Church closes^"
   },
   "Christianity 3": {
     "resistance": 0.05,
@@ -21,7 +21,7 @@
     "y": 286,
     "cost": 1000,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You reveal contradictions^in the Bible during an interview"
   },
   "Christianity 4": {
     "resistance": 0.003,
@@ -29,7 +29,7 @@
     "y": 354,
     "cost": 1500,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You publically prove^Christianity to be false"
   },
   "Judaism 1": {
     "resistance": 0.65,
@@ -37,7 +37,7 @@
     "y": 150,
     "cost": 250,
     "state": "available",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You convert a Jewish^friend to your religion"
   },
   "Judaism 2": {
     "resistance": 0.2,
@@ -45,7 +45,7 @@
     "y": 218,
     "cost": 500,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "A local synagogue closes^"
   },
   "Judaism 3": {
     "resistance": 0.05,
@@ -53,7 +53,7 @@
     "y": 286,
     "cost": 1000,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You reveal contradictions^in the Torah during an interview"
   },
   "Judaism 4": {
     "resistance": 0.003,
@@ -61,7 +61,7 @@
     "y": 354,
     "cost": 1500,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You publically prove^Judaism to be false"
   },
   "Islam 1": {
     "resistance": 0.65,
@@ -69,7 +69,7 @@
     "y": 150,
     "cost": 250,
     "state": "available",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You convert a Muslim^friend to your religion"
   },
   "Islam 2": {
     "resistance": 0.2,
@@ -77,7 +77,7 @@
     "y": 218,
     "cost": 500,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "A local Mosque closes^"
   },
   "Islam 3": {
     "resistance": 0.05,
@@ -85,7 +85,7 @@
     "y": 286,
     "cost": 1000,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You reveal contradictions^in the Quran during an interview"
   },
   "Islam 4": {
     "resistance": 0.003,
@@ -93,7 +93,7 @@
     "y": 354,
     "cost": 1500,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You publically prove^Islam to be false"
   },
   "Scientology 1": {
     "resistance": 0.65,
@@ -101,7 +101,7 @@
     "y": 150,
     "cost": 250,
     "state": "available",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You convert a Scientologist^friend to your religion"
   },
   "Scientology 2": {
     "resistance": 0.2,
@@ -109,7 +109,7 @@
     "y": 218,
     "cost": 500,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "A local Scientology Church closes^"
   },
   "Scientology 3": {
     "resistance": 0.05,
@@ -117,7 +117,7 @@
     "y": 286,
     "cost": 1000,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You reveal contradictions^in Scientology's Scripture during an interview"
   },
   "Scientology 4": {
     "resistance": 0.003,
@@ -125,6 +125,6 @@
     "y": 354,
     "cost": 1500,
     "state": "unavailable",
-    "upgradeMessage": "^"
+    "upgradeMessage": "You publically prove^Scientology to be false"
   }
 }

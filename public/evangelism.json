@@ -6,7 +6,7 @@
     "cost": 0,
     "x": 60,
     "y": 110,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You begin your religion by having^weekly sermons in your basement"
   },
   "Congregation 2": {
     "prereqs": ["Congregation 1"],
@@ -15,7 +15,7 @@
     "cost": 5,
     "x": 90,
     "y": 178,
-    "upgradeMessage": "^"
+    "upgradeMessage": "After gaining some followers, you^begin renting a small building"
   },
   "Congregation 3": {
     "prereqs": ["Door to Door 3", "Congregation 2"],
@@ -24,7 +24,7 @@
     "cost": 1200,
     "x": 120,
     "y": 246,
-    "upgradeMessage": "^"
+    "upgradeMessage": "Your religious meeting place is^now gargantuan in size"
   },
   "Door to Door 1": {
     "prereqs": ["Congregation 1"],
@@ -33,7 +33,7 @@
     "cost": 20,
     "x": 255,
     "y": 60,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You and your followers go^door to door to spread your word"
   },
   "Door to Door 2": {
     "prereqs": ["Door to Door 1"],
@@ -42,7 +42,7 @@
     "cost": 150,
     "x": 285,
     "y": 128,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You spend days recruiting^in neighboring regions"
   },
   "Door to Door 3": {
     "prereqs": ["Door to Door 2", "Congregation 2"],
@@ -51,7 +51,7 @@
     "cost": 800,
     "x": 353,
     "y": 157,
-    "upgradeMessage": "^"
+    "upgradeMessage": "Some of your followers go^fulltime door to door recruiting"
   },
   "Missionaries 1": {
     "prereqs": ["Door to Door 3"],
@@ -60,7 +60,7 @@
     "cost": 1500,
     "x": 510,
     "y": 100,
-    "upgradeMessage": "^"
+    "upgradeMessage": "A few of your followers fly out to^distant regions to spread your word"
   },
   "Missionaries 2": {
     "prereqs": ["Missionaries 1", "Radio 1"],
@@ -69,7 +69,7 @@
     "cost": 2000,
     "x": 540,
     "y": 168,
-    "upgradeMessage": "^"
+    "upgradeMessage": "Your followers are now assigned missionary^work to fulfill their faith"
   },
   "Missionaries 3": {
     "prereqs": ["Missionaries 2", "Congregation 3", "Radio 2"],
@@ -78,7 +78,7 @@
     "cost": 3000,
     "x": 510,
     "y": 236,
-    "upgradeMessage": "^"
+    "upgradeMessage": "Your followers use private jets^to get around the country"
   },
   "Print 1": {
     "prereqs": ["Door to Door 2"],
@@ -87,7 +87,7 @@
     "cost": 300,
     "x": 57,
     "y": 374,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You put fliers out around^town about your religion"
   },
   "Print 2": {
     "prereqs": ["Print 1"],
@@ -96,7 +96,7 @@
     "cost": 1000,
     "x": 125,
     "y": 404,
-    "upgradeMessage": "^"
+    "upgradeMessage": "The local newspaper writes a ^short article about your religion"
   },
   "Print 3": {
     "prereqs": ["Print 2", "Missionaries 1"],
@@ -105,7 +105,7 @@
     "cost": 1800,
     "x": 194,
     "y": 375,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You're on the cover of^a popular magazine"
   },
   "Radio 1": {
     "prereqs": ["Print 2"],
@@ -114,7 +114,7 @@
     "cost": 1000,
     "x": 300,
     "y": 280,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You buy an ad on^local radio stations"
   },
   "Radio 2": {
     "prereqs": ["Radio 1", "Print 3"],
@@ -123,7 +123,7 @@
     "cost": 1800,
     "x": 369,
     "y": 308,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You have an interview with^a popular radio host"
   },
   "Radio 3": {
     "prereqs": ["Radio 2"],
@@ -132,7 +132,7 @@
     "cost": 2200,
     "x": 341,
     "y": 377,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You host your^own radio station"
   },
   "Televangelism 1": {
     "prereqs": ["Radio 2"],
@@ -141,7 +141,7 @@
     "cost": 2000,
     "x": 510,
     "y": 374,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You are interviewed by^the local news network"
   },
   "Televangelism 2": {
     "prereqs": ["Televangelism 1", "Radio 3"],
@@ -150,7 +150,7 @@
     "cost": 2500,
     "x": 579,
     "y": 345,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You start a weekly^televangelism program"
   },
   "Televangelism 3": {
     "prereqs": ["Televangelism 2"],
@@ -159,7 +159,7 @@
     "cost": 4000,
     "x": 647,
     "y": 374,
-    "upgradeMessage": "^"
+    "upgradeMessage": "You buy an ad slot^for during the Superbowl"
   },
   "Divine Revelation": {
     "prereqs": ["Missionaries 3", "Televangelism 3"],
@@ -168,6 +168,6 @@
     "cost": 6000,
     "x": 735,
     "y": 230,
-    "upgradeMessage": "^"
+    "upgradeMessage": "Your God begins revealing^himself to non-believers"
   }
 }
