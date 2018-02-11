@@ -189,7 +189,7 @@ function render() {
     } else {
       this.canvas.style('z-index', '5')
     }
-  image(this.popup, window.innerWidth/2-this.popup.width/2, 200)
+  image(this.popup, window.innerWidth/2-this.popup.width/2, window.innerHeight/2-this.popup.height/2)
   image(this.infoBar, 0, window.innerHeight-canvasHeight)
 }
 
@@ -244,8 +244,8 @@ function updatePopup() {
         polygon(evangelism[method].x, evangelism[method].y, 40, 8, evangelism[method].state)
 
         let hoverOver = false
-        if(mouseX < evangelism[method].x+40+window.innerWidth/2-400 && mouseX > evangelism[method].x-40+window.innerWidth/2-400 &&
-          mouseY < evangelism[method].y+window.innerHeight/2-250 && mouseY > evangelism[method].y-80+window.innerHeight/2-250) {
+        if(mouseX < evangelism[method].x+40+window.innerWidth/2-this.popup.width/2 && mouseX > evangelism[method].x-40+window.innerWidth/2-this.popup.width/2 &&
+          mouseY < evangelism[method].y+40+window.innerHeight/2-this.popup.height/2 && mouseY > evangelism[method].y-40+window.innerHeight/2-this.popup.height/2) {
             for(prereq of evangelism[method].prereqs) {
               hoverOver = true
               this.popup.stroke(255, 0, 0)
@@ -440,19 +440,20 @@ function updatePopup() {
   this.popup.text("Resistances", this.popup.width/2 + this.popup.width/3, this.popup.height - 25)
 }
 
+let maxNameLength = 30
 
 function keyPressed() {
   if(game_state === 'new') {
     if(keyCode === 8) {
       religionName = religionName.slice(0, religionName.length-1)
-    } else if(keyCode === 13) {
+    } else if(keyCode === 13 && religionName.length > 0) {
       game_state = 'start'
     }
   }
 }
 
 function keyTyped() {
-  if(game_state === 'new') {
+  if(game_state === 'new' && keyCode !== 13 && !(religionName.length >= maxNameLength)) {
     religionName += key
   }
 }
@@ -465,7 +466,7 @@ function mouseClicked() {
 
   if(game_state === 'new') {
     if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
-      mouseX > window.innerWidth/2-150 && mouseX < window.innerWidth/2+150){
+      mouseX > window.innerWidth/2-150 && mouseX < window.innerWidth/2+150 && religionName.length > 0){
         game_state = 'start'
         return
       }
@@ -500,7 +501,7 @@ function mouseClicked() {
         return
       }
     if(game_state === 'heathens') return
-    if(mouseY < window.innerHeight/2+this.popup.height/2-50 && mouseY > window.innerHeight/2+this.popup.height/2-100) {
+    if(mouseY < window.innerHeight/2+this.popup.height/2 && mouseY > window.innerHeight/2+this.popup.height/2-50) {
       if(mouseX < window.innerWidth/2+this.popup.width/2 && mouseX > window.innerWidth/2+this.popup.width/2 - this.popup.width/3) {
         game_state = 'resistances'
       }
@@ -512,9 +513,10 @@ function mouseClicked() {
       }
     }
     if(game_state === 'evangelism') {
+      console.log(mouseY)
       for(method in evangelism) {
-        if(mouseX < evangelism[method].x+40+window.innerWidth/2-400 && mouseX > evangelism[method].x-40+window.innerWidth/2-400 &&
-          mouseY < evangelism[method].y+window.innerHeight/2-250 && mouseY > evangelism[method].y-80+window.innerHeight/2-250) {
+        if(mouseX < evangelism[method].x+40+window.innerWidth/2-this.popup.width/2 && mouseX > evangelism[method].x-40+window.innerWidth/2-this.popup.width/2 &&
+           mouseY < evangelism[method].y+40+window.innerHeight/2-this.popup.height/2 && mouseY > evangelism[method].y-40+window.innerHeight/2-this.popup.height/2) {
             if(evangelism[method].state === 'available' && blessings >= evangelism[method].cost) {
               evangelism[method].state = 'bought'
               blessings -= evangelism[method].cost
