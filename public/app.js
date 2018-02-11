@@ -190,10 +190,11 @@ function updateInfoBar() {
   this.infoBar.fill(0, 0, 0)
   this.infoBar.textFont('IM Fell English SC')
   this.infoBar.textSize(30)
+  this.infoBar.textAlign(LEFT, CENTER)
+  this.infoBar.text(`Total Enlightened: ${totalConverts.toLocaleString()}`, window.innerWidth/2 - 150, 30)
+  this.infoBar.text(`Blessings: ${blessings.toLocaleString()}`, window.innerWidth/2 - 150, 60)
   this.infoBar.textAlign(CENTER, CENTER)
   this.infoBar.text('Religion', window.innerWidth/5, 40)
-  this.infoBar.text(`Total Enlightened: ${totalConverts.toLocaleString()}`, window.innerWidth/2, 30)
-  this.infoBar.text(`Blessings: ${blessings.toLocaleString()}`, window.innerWidth/2, 60)
   this.infoBar.text('Heathens', 4*window.innerWidth/5, 40)
 }
 
@@ -271,16 +272,16 @@ function updatePopup() {
       this.popup.text('Scientologists', 30, 450)
 
       this.popup.text('Gossip Control', 300, 100)
-      this.popup.text(`${dampeners.christianity.wordOfMouth.toFixed(4)}%`, 350, 150)
-      this.popup.text(`${dampeners.judaism.wordOfMouth.toFixed(4)}%`, 350, 250)
-      this.popup.text(`${dampeners.islam.wordOfMouth.toFixed(4)}%`, 350, 350)
-      this.popup.text(`${dampeners.scientology.wordOfMouth.toFixed(4)}%`, 350, 450)
+      this.popup.text(`${dampeners.christianity.wordOfMouth.toFixed(7)}%`, 350, 150)
+      this.popup.text(`${dampeners.judaism.wordOfMouth.toFixed(7)}%`, 350, 250)
+      this.popup.text(`${dampeners.islam.wordOfMouth.toFixed(7)}%`, 350, 350)
+      this.popup.text(`${dampeners.scientology.wordOfMouth.toFixed(7)}%`, 350, 450)
 
       this.popup.text('Media Control', 550, 100)
-      this.popup.text(`${dampeners.christianity.media.toFixed(4)}%`, 600, 150)
-      this.popup.text(`${dampeners.judaism.media.toFixed(4)}%`, 600, 250)
-      this.popup.text(`${dampeners.islam.media.toFixed(4)}%`, 600, 350)
-      this.popup.text(`${dampeners.scientology.media.toFixed(4)}%`, 600, 450)
+      this.popup.text(`${dampeners.christianity.media.toFixed(7)}%`, 600, 150)
+      this.popup.text(`${dampeners.judaism.media.toFixed(7)}%`, 600, 250)
+      this.popup.text(`${dampeners.islam.media.toFixed(7)}%`, 600, 350)
+      this.popup.text(`${dampeners.scientology.media.toFixed(7)}%`, 600, 450)
       break
 
     default:

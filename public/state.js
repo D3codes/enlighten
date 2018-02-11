@@ -54,6 +54,6 @@ class State {
     this.converted = ceil(this.converted/totalDeconversion)
 
     if(this.converted > this.population) this.converted = this.population
-    if(this.coverted < this.population) this.converted = 0
+    if(this.converted < 0) this.converted = 0
   }
 }
