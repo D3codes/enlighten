@@ -171,7 +171,7 @@ function update() {
       if(random() < percentConverted) {
         let dampenAmount = map(percentConverted, 0, 1, 0.0000001, 0.0001)
         if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) {
-          if(dampenders[religion].wordOfMouth === 0) {
+          if(dampeners[religion].wordOfMouth === 0 && messageDisplayed === false) {
             messageDisplayed = true
             messageSetTime = millis()
             message1 = `${dampeners[religion].followers} are getting concerned`
@@ -179,11 +179,11 @@ function update() {
           }
           dampeners[religion].wordOfMouth += dampenAmount
         } else if(dampeners[religion].media < 0.8) {
-          if(dampenders[religion].media === 0) {
+          if(dampeners[religion].media === 0 && messageDisplayed === false) {
             messageDisplayed = true
             messageSetTime = millis()
             message1 = `${dampeners[religion].followers} are getting concerned`
-            message2 = `leaders have created anti-${relgionName} advertisements`
+            message2 = `leaders have created anti-${religionName} advertisements`
           }
           dampeners[religion].media += dampenAmount
         }
