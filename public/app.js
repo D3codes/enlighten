@@ -1,10 +1,11 @@
 let datamap
 let spreadSpeed = 15
 let blessings = 0
-let startState
+let startState = 'n/a'
 let totalPopulation = 323145790
 let totalConverts = 0
 let game_state = 'start'
+let last_state
 let canvasHeight = 100
 let states = []
 let evangelism = {}
@@ -15,7 +16,7 @@ let methods = [
     probSpread: 1
   },
   {
-    method: "Word of Mouth",
+    method: "Missionaries",
     probOccur: 0,
     probSpread: 0.0001
   },
@@ -30,7 +31,7 @@ let methods = [
     probSpread: 0.01
   },
   {
-    method: "Door-to-Door",
+    method: "Door to Door",
     probOccur: 0,
     probSpread: 0.005
   },
@@ -80,7 +81,13 @@ function setup() {
     return res.json()
   }).then((data) => {
     evangelism = data
+    for(let method in evangelism) {
+      evangelism[method].state = 'unavailable'
+    }
+    evangelism['Congregation 1'].state = 'bought'
+    setMethodStates(evangelism)
   })
+
 }
 
 function draw() {
@@ -119,6 +126,7 @@ function render() {
     this.canvas.style('z-index', '20')
     image(this.popup, window.innerWidth/2-this.popup.width/2, 200)
   } else {
+    image(this.popup, window.innerWidth/2-this.popup.width/2, 200)
     this.canvas.style('z-index', '5')
   }
   image(this.infoBar, 0, window.innerHeight-canvasHeight)
@@ -159,15 +167,56 @@ function updatePopup() {
       this.popup.text(`Start State: ${startState}`, 50, 150)
       break;
     case 'evangelism':
+      setMethodStates(evangelism)
       this.popup.background(220)
+      for(let method in evangelism) {
+        polygon(evangelism[method].x, evangelism[method].y, 40, 8, evangelism[method].state)
+      }
 
+      for(method in evangelism) {
+        let hoverOver = false
+        if(mouseX < evangelism[method].x+40+window.innerWidth/2-400 && mouseX > evangelism[method].x-40+window.innerWidth/2-400 &&
+          mouseY < evangelism[method].y+window.innerHeight/2-250 && mouseY > evangelism[method].y-80+window.innerHeight/2-250) {
+            for(prereq of evangelism[method].prereqs) {
+              hoverOver = true
+              this.popup.stroke(255, 0, 0)
+              this.popup.line(evangelism[method].x, evangelism[method].y, evangelism[prereq].x, evangelism[prereq].y)
+
+            }
+          }
+          this.popup.noStroke()
+          this.popup.fill(0)
+          this.popup.textFont("Verdana")
+          this.popup.textAlign(CENTER, CENTER)
+          if(!hoverOver || evangelism[method].state === 'bought') {
+            let type = method.split(' ')[0]
+            let level = method.split(' ')[1]
+            if(type === 'Door') {
+              type = 'Door to Door'
+              level = method.split(' ')[3]
+            }
+            this.popup.textSize(10)
+            this.popup.text(type, evangelism[method].x, evangelism[method].y)
+            if(level !== 'Revelation') this.popup.textSize(15)
+            this.popup.text(level, evangelism[method].x, evangelism[method].y+15)
+          } else {
+            this.popup.textSize(20)
+            this.popup.text(evangelism[method].cost, evangelism[method].x, evangelism[method].y)
+          }
+      }
       break;
     case 'resistances':
       this.popup.background(50, 50, 200)
 
       break;
+
+    default:
+      this.popup.background(255)
+      return
   }
 
+  this.popup.textFont('IM Fell English SC')
+  this.popup.textSize(30)
   this.popup.noStroke()
   this.popup.fill(20, 160, 50)
   this.popup.rect(0, popup.height-50, popup.width/3, 50)
@@ -185,14 +234,23 @@ function updatePopup() {
 function mouseClicked() {
   if(mouseY < window.innerHeight && mouseY > window.innerHeight - 100) {
     if(mouseX < 4*window.innerWidth/5 + 200 && mouseX > 4*window.innerWidth/5 - 200) {
+      last_state = game_state
       game_state = 'heathens'
+      return
     }
     if(mouseX < window.innerWidth/5 + 200 && mouseX > window.innerWidth/5 - 200) {
+      last_state = game_state
       game_state = 'religion'
+      return
     }
   }
 
   if(game_state === 'religion' || game_state === 'evangelism' || game_state === 'resistances') {
+    if(mouseY > window.innerHeight/2+this.popup.height/2 || mouseY < window.innerHeight/2-this.popup.height/2 ||
+      mouseX < window.innerWidth/2-this.popup.width/2 || mouseX > window.innerWidth/2+this.popup.width/2){
+        game_state = last_state
+        return
+      }
     if(mouseY < window.innerHeight/2+this.popup.height/2-50 && mouseY > window.innerHeight/2+this.popup.height/2-100) {
       if(mouseX < window.innerWidth/2+this.popup.width/2 && mouseX > window.innerWidth/2+this.popup.width/2 - this.popup.width/3) {
         game_state = 'resistances'
@@ -202,6 +260,43 @@ function mouseClicked() {
       }
       else if(mouseX < window.innerWidth/2+this.popup.width/2 && mouseX > window.innerWidth/2-this.popup.width/2) {
         game_state = 'religion'
+      }
+    }
+    if(game_state === 'evangelism') {
+      for(method in evangelism) {
+        if(mouseX < evangelism[method].x+40+window.innerWidth/2-400 && mouseX > evangelism[method].x-40+window.innerWidth/2-400 &&
+          mouseY < evangelism[method].y+window.innerHeight/2-250 && mouseY > evangelism[method].y-80+window.innerHeight/2-250) {
+            if(evangelism[method].state === 'available' && blessings >= evangelism[method].cost) {
+              evangelism[method].state = 'bought'
+              blessings -= evangelism[method].cost
+              let index = 0
+              switch(method.split(' ')[1]) {
+                case 'Congregation':
+                  index = 6
+                  break;
+                case 'Door':
+                  index = 4
+                  break;
+                case 'Missionaries':
+                  index = 1
+                  break;
+                case 'Print':
+                  index = 5
+                  break
+                case 'Radio':
+                  index = 3
+                  break
+                case 'Televangelism':
+                  index = 2
+                  break;
+                case 'Divine':
+                  index = 0
+                  break
+              }
+              methods[index].probOccur = evangelism[method].probOccur
+              methods[index].probSpread = evangelism[method].probSpread
+            }
+          }
       }
     }
   }
@@ -215,5 +310,39 @@ function mapClicked(geography) {
       states[i].converted = 1
       game_state = 'play'
     }
+  }
+}
+
+function polygon(x, y, radius, npoints, state) {
+  var angle = TWO_PI / npoints;
+  switch(state) {
+    case 'unavailable':
+      this.popup.fill(100)
+      break
+    case 'bought':
+      this.popup.fill(220, 220, 0)
+      break
+    case 'available':
+      this.popup.fill(255)
+      break
+  }
+  this.popup.beginShape();
+  this.popup.stroke(0)
+  for (var a = 0; a < TWO_PI; a += angle) {
+    var sx = x + cos(a) * radius;
+    var sy = y + sin(a) * radius;
+    this.popup.vertex(sx, sy);
+  }
+  this.popup.endShape(CLOSE);
+}
+
+function setMethodStates(evangelism) {
+  for(method in evangelism) {
+    if(evangelism[method].state === 'bought') continue
+    let available = 'available'
+    for(prereq of evangelism[method].prereqs) {
+      if(evangelism[prereq].state !== 'bought') available = 'unavailable'
+    }
+    evangelism[method].state = available
   }
 }
