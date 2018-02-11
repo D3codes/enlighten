@@ -86,10 +86,24 @@ let resistances = {
 
 function preload() {
   buttonClick = loadSound('assets/button.wav')
+  amen = loadSound('assets/amen.wav')
+  knock = loadSound('assets/knock.wav')
+  printSound = loadSound('assets/print.wav')
+  radio = loadSound('assets/radio.wav')
+  mission = loadSound('assets/mission.wav')
+  tele = loadSound('assets/tele.wav')
+  choir = loadSound('assets/choir.wav')
 }
 
 function setup() {
   buttonClick.setVolume(0.4)
+  amen.setVolume(0.4)
+  knock.setVolume(0.4)
+  printSound.setVolume(0.4)
+  radio.setVolume(0.4)
+  mission.setVolume(0.4)
+  tele.setVolume(0.4)
+  choir.setVolume(0.4)
   pixelDensity(1)
   let container = createDiv('')
   container.id('map')
@@ -582,24 +596,31 @@ function mouseClicked() {
               let index = -1
               switch(method.split(' ')[0]) {
                 case 'Congregation':
+                  amen.play()
                   index = 6
                   break;
                 case 'Door':
+                  knock.play()
                   index = 4
                   break;
                 case 'Missionaries':
+                  mission.play()
                   index = 1
                   break;
                 case 'Print':
+                  printSound.play()
                   index = 5
                   break
                 case 'Radio':
+                  radio.play()
                   index = 3
                   break
                 case 'Televangelism':
+                  tele.play()
                   index = 2
                   break;
                 case 'Divine':
+                  choir.play()
                   index = 0
                   break
               }
@@ -622,6 +643,7 @@ function mouseClicked() {
           let distance = sqrt(dx * dx + dy * dy)
           if(distance < circle1.radius + circle2.radius) {
               if(resists[resist].state === 'available' && blessings >= resists[resist].cost) {
+                buttonClick.play()
                 resists[resist].state = 'bought'
                 blessings -= resists[resist].cost
                 resistances[resist.split(' ')[0].toLowerCase()] = resists[resist].resistance
