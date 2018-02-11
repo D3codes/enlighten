@@ -501,14 +501,11 @@ function mouseClicked() {
   if(game_state === 'new') {
     if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
       mouseX > window.innerWidth/2-150 && mouseX < window.innerWidth/2+150 && religionName.length > 0){
-<<<<<<< HEAD
         buttonClick.play()
-=======
         messageDisplayed = true
         messageSetTime = millis()
         message1 = "Click where you want to"
         message2 = "start spreading Enlightenment"
->>>>>>> cfe28c4e5f7fb09a2c2813c75a34fe0797231530
         game_state = 'start'
         return
       }
