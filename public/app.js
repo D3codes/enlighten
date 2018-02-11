@@ -84,7 +84,12 @@ let resistances = {
   scientology: 1
 }
 
+function preload() {
+  buttonClick = loadSound('assets/button.wav')
+}
+
 function setup() {
+  buttonClick.setVolume(0.4)
   pixelDensity(1)
   let container = createDiv('')
   container.id('map')
@@ -506,6 +511,7 @@ function mouseClicked() {
   if(game_state === 'new') {
     if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
       mouseX > window.innerWidth/2-150 && mouseX < window.innerWidth/2+150 && religionName.length > 0){
+        buttonClick.play()
         messageDisplayed = true
         messageSetTime = millis()
         message1 = "Click where you want to"
@@ -519,12 +525,14 @@ function mouseClicked() {
   if(mouseY < window.innerHeight && mouseY > window.innerHeight - 100) {
     if(mouseX < 4*window.innerWidth/5 + 100 && mouseX > 4*window.innerWidth/5 - 100) {
       if(game_state === 'start' || game_state === 'play') last_state = game_state
+      buttonClick.play()
       game_state = 'heathens'
       return
     }
     if(mouseX < window.innerWidth/5 + 100 && mouseX > window.innerWidth/5 - 100) {
       if(game_state === 'start' || game_state === 'play') last_state = game_state
       game_state = 'religion'
+      buttonClick.play()
       return
     }
   }
@@ -532,6 +540,7 @@ function mouseClicked() {
   if(game_state === 'stateInfo') {
     if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
       mouseX > window.innerWidth/2-100 && mouseX < window.innerWidth/2+100){
+        buttonClick.play()
         game_state = last_state
         return
       }
@@ -546,12 +555,15 @@ function mouseClicked() {
     if(game_state === 'heathens') return
     if(mouseY < window.innerHeight/2+this.popup.height/2 && mouseY > window.innerHeight/2+this.popup.height/2-50) {
       if(mouseX < window.innerWidth/2+this.popup.width/2 && mouseX > window.innerWidth/2+this.popup.width/2 - this.popup.width/3) {
+        buttonClick.play()
         game_state = 'resistances'
       }
       else if(mouseX < window.innerWidth/2+this.popup.width/2 && mouseX > window.innerWidth/2+this.popup.width/2 - 2*this.popup.width/3) {
+        buttonClick.play()
         game_state = 'evangelism'
       }
       else if(mouseX < window.innerWidth/2+this.popup.width/2 && mouseX > window.innerWidth/2-this.popup.width/2) {
+        buttonClick.play()
         game_state = 'religion'
       }
     }
