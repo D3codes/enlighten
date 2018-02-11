@@ -9,7 +9,7 @@
   },
   "Congregation 2": {
     "prereqs": ["Congregation 1"],
-    "probOccur": 0.4,
+    "probOccur": 0.45,
     "probSpread": 0.000006,
     "cost": 5,
     "x": 90,
@@ -17,7 +17,7 @@
   },
   "Congregation 3": {
     "prereqs": ["Door to Door 3", "Congregation 2"],
-    "probOccur": 0.4,
+    "probOccur": 0.45,
     "probSpread": 0.0035,
     "cost": 1200,
     "x": 120,
@@ -25,7 +25,7 @@
   },
   "Door to Door 1": {
     "prereqs": ["Congregation 1"],
-    "probOccur": 0.015,
+    "probOccur": 0.02,
     "probSpread": 0.000008,
     "cost": 20,
     "x": 255,
@@ -33,7 +33,7 @@
   },
   "Door to Door 2": {
     "prereqs": ["Door to Door 1"],
-    "probOccur": 0.015,
+    "probOccur": 0.02,
     "probSpread": 0.0001,
     "cost": 150,
     "x": 285,
@@ -41,7 +41,7 @@
   },
   "Door to Door 3": {
     "prereqs": ["Door to Door 2", "Congregation 2"],
-    "probOccur": 0.015,
+    "probOccur": 0.02,
     "probSpread": 0.00012,
     "cost": 800,
     "x": 353,
