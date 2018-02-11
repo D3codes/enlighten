@@ -152,10 +152,7 @@ function update() {
     let percentConverted = map(totalConverts, 0, totalPopulation, 0, 1)
     for(religion in dampeners) {
       if(random() < percentConverted) {
-        let dampenAmount = 0.0000001
-        if(percentConverted > 0.01) dampenAmount = 0.00001
-        if(percentConverted > 0.1) dampenAmount = 0.001
-        if(percentConverted > 0.25) dampenAmount = 0.1
+        let dampenAmount = map(percentConverted, 0, 100, 0.0000001, 0.0001)
         if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += dampenAmount
         else if(dampeners[religion].media < 0.8) dampeners[religion].media += dampenAmount
       }

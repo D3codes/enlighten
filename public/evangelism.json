@@ -18,8 +18,8 @@
   "Congregation 3": {
     "prereqs": ["Door to Door 3", "Congregation 2"],
     "probOccur": 0.4,
-    "probSpread": 0.003,
-    "cost": 1000,
+    "probSpread": 0.0035,
+    "cost": 1200,
     "x": 120,
     "y": 246
   },
@@ -27,14 +27,14 @@
     "prereqs": ["Congregation 1"],
     "probOccur": 0.015,
     "probSpread": 0.000008,
-    "cost": 15,
+    "cost": 25,
     "x": 255,
     "y": 60
   },
   "Door to Door 2": {
     "prereqs": ["Door to Door 1"],
     "probOccur": 0.015,
-    "probSpread": 0.00001,
+    "probSpread": 0.0001,
     "cost": 200,
     "x": 285,
     "y": 128
@@ -42,7 +42,7 @@
   "Door to Door 3": {
     "prereqs": ["Door to Door 2", "Congregation 2"],
     "probOccur": 0.015,
-    "probSpread": 0.000012,
+    "probSpread": 0.00012,
     "cost": 800,
     "x": 353,
     "y": 157
@@ -50,7 +50,7 @@
   "Missionaries 1": {
     "prereqs": ["Door to Door 3"],
     "probOccur": 0.001,
-    "probSpread": 0.00001,
+    "probSpread": 0.0001,
     "cost": 1500,
     "x": 510,
     "y": 100
@@ -58,16 +58,16 @@
   "Missionaries 2": {
     "prereqs": ["Missionaries 1", "Radio 1"],
     "probOccur": 0.001,
-    "probSpread": 0.000015,
-    "cost": 5000,
+    "probSpread": 0.00015,
+    "cost": 3000,
     "x": 540,
     "y": 168
   },
   "Missionaries 3": {
     "prereqs": ["Missionaries 2", "Congregation 3", "Radio 2"],
     "probOccur": 0.001,
-    "probSpread": 0.00002,
-    "cost": 15000,
+    "probSpread": 0.0002,
+    "cost": 6000,
     "x": 510,
     "y": 236
   },
@@ -75,22 +75,22 @@
     "prereqs": ["Door to Door 2"],
     "probOccur": 0.5,
     "probSpread": 0.0003,
-    "cost": 300,
+    "cost": 500,
     "x": 57,
     "y": 374
   },
   "Print 2": {
     "prereqs": ["Print 1"],
     "probOccur": 0.5,
-    "probSpread": 0.0004,
-    "cost": 800,
+    "probSpread": 0.00045,
+    "cost": 900,
     "x": 125,
     "y": 404
   },
   "Print 3": {
     "prereqs": ["Print 2", "Missionaries 1"],
     "probOccur": 0.5,
-    "probSpread": 0.0005,
+    "probSpread": 0.0006,
     "cost": 1500,
     "x": 194,
     "y": 375
@@ -106,7 +106,7 @@
   "Radio 2": {
     "prereqs": ["Radio 1", "Print 3"],
     "probOccur": 0.02,
-    "probSpread": 0.007,
+    "probSpread": 0.008,
     "cost": 1800,
     "x": 369,
     "y": 308
@@ -114,8 +114,8 @@
   "Radio 3": {
     "prereqs": ["Radio 2"],
     "probOccur": 0.02,
-    "probSpread": 0.0075,
-    "cost": 3000,
+    "probSpread": 0.01,
+    "cost": 2200,
     "x": 341,
     "y": 377
   },
@@ -131,7 +131,7 @@
     "prereqs": ["Televangelism 1", "Radio 3", "Print 3"],
     "probOccur": 0.006,
     "probSpread": 0.04,
-    "cost": 10000,
+    "cost": 6000,
     "x": 579,
     "y": 345
   },
@@ -139,7 +139,7 @@
     "prereqs": ["Televangelism 2"],
     "probOccur": 0.007,
     "probSpread": 0.045,
-    "cost": 30000,
+    "cost": 10000,
     "x": 647,
     "y": 374
   },
@@ -147,7 +147,7 @@
     "prereqs": ["Missionaries 3", "Televangelism 3"],
     "probOccur": 0.00001,
     "probSpread": 1,
-    "cost": 100000,
+    "cost": 12000,
     "x": 735,
     "y": 230
   }
