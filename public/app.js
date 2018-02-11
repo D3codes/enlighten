@@ -4,6 +4,10 @@ let startState = 'n/a'
 let totalPopulation = 323127513
 let totalConverts = 0
 let game_state = 'new'
+let messageDisplayed
+let messageSetTime
+let message1
+let message2
 let last_state
 let infoState
 let religionName = ''
@@ -201,20 +205,32 @@ function render() {
 function updateInfoBar() {
   this.infoBar.background(255, 255, 255)
 
+  this.infoBar.textFont('IM Fell English SC')
+  this.infoBar.textSize(30)
+
+  if(millis() - messageSetTime > 10000) messageDisplayed = false
+
+  if(messageDisplayed) {
+    this.infoBar.fill(220, 20, 20)
+    this.infoBar.textAlign(CENTER, CENTER)
+    this.infoBar.text(message1, window.innerWidth/2, 30)
+    this.infoBar.text(message2, window.innerWidth/2, 60)
+  } else {
+    this.infoBar.textAlign(LEFT, CENTER)
+    this.infoBar.fill(0, 0, 0)
+    this.infoBar.text(`People Enlightened: ${totalConverts.toLocaleString()}`, window.innerWidth/2 - 150, 30)
+    this.infoBar.text(`Divine Blessings: ${blessings.toLocaleString()}`, window.innerWidth/2 - 150, 60)
+  }
+
+
   this.infoBar.rectMode(RADIUS)
   this.infoBar.noStroke()
   this.infoBar.fill(200, 200, 0)
-  this.infoBar.rect(window.innerWidth/5, 40, 200, 50)
+  this.infoBar.rect(window.innerWidth/5, 40, 100, 50)
   this.infoBar.fill(255, 50, 50)
-  this.infoBar.rect(4*window.innerWidth/5, 40, 200, 50)
-
-  this.infoBar.fill(0, 0, 0)
-  this.infoBar.textFont('IM Fell English SC')
-  this.infoBar.textSize(30)
-  this.infoBar.textAlign(LEFT, CENTER)
-  this.infoBar.text(`People Enlightened: ${totalConverts.toLocaleString()}`, window.innerWidth/2 - 150, 30)
-  this.infoBar.text(`Divine Blessings: ${blessings.toLocaleString()}`, window.innerWidth/2 - 150, 60)
+  this.infoBar.rect(4*window.innerWidth/5, 40, 100, 50)
   this.infoBar.textAlign(CENTER, CENTER)
+  this.infoBar.fill(0, 0, 0)
   this.infoBar.text('Religion', window.innerWidth/5, 40)
   this.infoBar.text('Heathens', 4*window.innerWidth/5, 40)
 }
@@ -382,7 +398,7 @@ function updatePopup() {
       this.popup.noStroke()
       this.popup.textSize(30)
       this.popup.text('Click continue or press the enter key', 400, 250)
-      this.popup.text('Then click the state you want to start your religion in', 400, 300)
+      this.popup.text('to begin spreading Enlightenment', 400, 300)
 
       this.popup.fill(51)
       this.popup.rect(250, 400, 300, 50)
@@ -461,6 +477,10 @@ function keyPressed() {
     if(keyCode === 8) {
       religionName = religionName.slice(0, religionName.length-1)
     } else if(keyCode === 13 && religionName.length > 0) {
+      messageDisplayed = true
+      messageSetTime = millis()
+      message1 = "Click where you want to"
+      message2 = "start spreading Enlightenment"
       game_state = 'start'
     }
   }
@@ -481,7 +501,14 @@ function mouseClicked() {
   if(game_state === 'new') {
     if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
       mouseX > window.innerWidth/2-150 && mouseX < window.innerWidth/2+150 && religionName.length > 0){
+<<<<<<< HEAD
         buttonClick.play()
+=======
+        messageDisplayed = true
+        messageSetTime = millis()
+        message1 = "Click where you want to"
+        message2 = "start spreading Enlightenment"
+>>>>>>> cfe28c4e5f7fb09a2c2813c75a34fe0797231530
         game_state = 'start'
         return
       }
@@ -489,13 +516,13 @@ function mouseClicked() {
   }
 
   if(mouseY < window.innerHeight && mouseY > window.innerHeight - 100) {
-    if(mouseX < 4*window.innerWidth/5 + 200 && mouseX > 4*window.innerWidth/5 - 200) {
+    if(mouseX < 4*window.innerWidth/5 + 100 && mouseX > 4*window.innerWidth/5 - 100) {
       if(game_state === 'start' || game_state === 'play') last_state = game_state
       buttonClick.play()
       game_state = 'heathens'
       return
     }
-    if(mouseX < window.innerWidth/5 + 200 && mouseX > window.innerWidth/5 - 200) {
+    if(mouseX < window.innerWidth/5 + 100 && mouseX > window.innerWidth/5 - 100) {
       if(game_state === 'start' || game_state === 'play') last_state = game_state
       game_state = 'religion'
       buttonClick.play()
@@ -569,6 +596,10 @@ function mouseClicked() {
                   index = 0
                   break
               }
+              messageDisplayed = true
+              messageSetTime = millis()
+              message1 = evangelism[method].upgradeMessage.split('^')[0]
+              message2 = evangelism[method].upgradeMessage.split('^')[1]
               methods[index].probOccur = evangelism[method].probOccur
               methods[index].probSpread = evangelism[method].probSpread
             }
@@ -587,6 +618,10 @@ function mouseClicked() {
                 resists[resist].state = 'bought'
                 blessings -= resists[resist].cost
                 resistances[resist.split(' ')[0].toLowerCase()] = resists[resist].resistance
+                messageDisplayed = true
+                messageSetTime = millis()
+                message1 = resists[resist].upgradeMessage.split('^')[0]
+                message2 = resists[resist].upgradeMessage.split('^')[1]
                 if(parseInt(resist.split(' ')[1])+1 <= 4) {
                     resists[`${resist.split(' ')[0]} ${parseInt(resist.split(' ')[1])+1}`].state = 'available'
                 }
@@ -604,6 +639,7 @@ function mapClicked(geography) {
       if(game_state === 'start'){
         startState = states[i].name
         states[i].converted = 1
+        messageDisplayed = false
         game_state = 'play'
       } else {
         infoState = states[i]

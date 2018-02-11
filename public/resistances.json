@@ -4,111 +4,127 @@
     "x": 120,
     "y": 150,
     "cost": 250,
-    "state": "available"
+    "state": "available",
+    "upgradeMessage": "^"
   },
   "Christianity 2": {
     "resistance": 0.2,
     "x": 150,
     "y": 218,
     "cost": 500,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Christianity 3": {
     "resistance": 0.05,
     "x": 120,
     "y": 286,
     "cost": 1000,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Christianity 4": {
     "resistance": 0.003,
     "x": 150,
     "y": 354,
     "cost": 1500,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Judaism 1": {
     "resistance": 0.65,
     "x": 323,
     "y": 150,
     "cost": 250,
-    "state": "available"
+    "state": "available",
+    "upgradeMessage": "^"
   },
   "Judaism 2": {
     "resistance": 0.2,
     "x": 353,
     "y": 218,
     "cost": 500,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Judaism 3": {
     "resistance": 0.05,
     "x": 323,
     "y": 286,
     "cost": 1000,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Judaism 4": {
     "resistance": 0.003,
     "x": 353,
     "y": 354,
     "cost": 1500,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Islam 1": {
     "resistance": 0.65,
     "x": 485,
     "y": 150,
     "cost": 250,
-    "state": "available"
+    "state": "available",
+    "upgradeMessage": "^"
   },
   "Islam 2": {
     "resistance": 0.2,
     "x": 515,
     "y": 218,
     "cost": 500,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Islam 3": {
     "resistance": 0.05,
     "x": 485,
     "y": 286,
     "cost": 1000,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Islam 4": {
     "resistance": 0.003,
     "x": 515,
     "y": 354,
     "cost": 1500,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Scientology 1": {
     "resistance": 0.65,
     "x": 675,
     "y": 150,
     "cost": 250,
-    "state": "available"
+    "state": "available",
+    "upgradeMessage": "^"
   },
   "Scientology 2": {
     "resistance": 0.2,
     "x": 705,
     "y": 218,
     "cost": 500,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Scientology 3": {
     "resistance": 0.05,
     "x": 675,
     "y": 286,
     "cost": 1000,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   },
   "Scientology 4": {
     "resistance": 0.003,
     "x": 705,
     "y": 354,
     "cost": 1500,
-    "state": "unavailable"
+    "state": "unavailable",
+    "upgradeMessage": "^"
   }
 }
