@@ -133,8 +133,10 @@ function update() {
       if(random() < 0.5) religion.wordOfMouth += 0.001
       else religion.media += 0.001
     }
-    if(percentConverted > 0.5 && random() < percentConverted) {
-      religion.deconversion += random(totalConverts*percentConverted)
+    if(percentConverted > 0.5) {
+      religion.deconversion += floor(random(1, 3))
+    } else if(percentConverted < 0.25 && religion.deconversion > 0) {
+      religion.deconverstion -= floor(random(1, 3))
     }
   }
 

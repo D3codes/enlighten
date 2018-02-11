@@ -37,17 +37,19 @@ class State {
           probSpread -= dampeners.scientology.wordOfMouth*resistances.scientology
             break
         }
-        let totalDeconversion = 0
-        totalDeconversion += dampeners.christianity.deconversion*resistances.christianity
-        totalDeconversion += dampeners.judaism.deconversion*resistances.judaism
-        totalDeconversion += dampeners.islam.deconversion*resistances.islam
-        totalDeconversion += dampeners.scientology.deconversion*resistances.scientology
 
         people += ceil(random(map(this.converted / probSpread, 0, this.population / probSpread, 1, this.population - this.converted)))
-        people -= floor(random(totalDeconversion))
       }
     }
     this.converted += people
+
+    let totalDeconversion = 1
+    totalDeconversion += floor(dampeners.christianity.deconversion*resistances.christianity)
+    totalDeconversion += floor(dampeners.judaism.deconversion*resistances.judaism)
+    totalDeconversion += floor(dampeners.islam.deconversion*resistances.islam)
+    totalDeconversion += floor(dampeners.scientology.deconversion*resistances.scientology)
+    this.converted = ceil(this.converted/totalDeconversion)
+
     if(this.converted > this.population) this.converted = this.population
   }
 }
