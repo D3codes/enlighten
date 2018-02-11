@@ -145,8 +145,12 @@ function update() {
     let percentConverted = map(totalConverts, 0, totalPopulation, 0, 1)
     for(religion in dampeners) {
       if(random() < percentConverted) {
-        if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += 0.0000001
-        else if(dampeners[religion].media < 0.8) dampeners[religion].media += 0.0000001
+        let dampenAmount = 0.0000001
+        if(percentConverted > 0.01) dampenAmount = 0.00001
+        if(percentConverted > 0.1) dampenAmount = 0.001
+        if(percentConverted > 0.25) dampenAmount = 0.1
+        if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += dampenAmount
+        else if(dampeners[religion].media < 0.8) dampeners[religion].media += dampenAmount
       }
       if(percentConverted > 0.4) {
         dampeners[religion].deconversion += floor(random(1, 3))
