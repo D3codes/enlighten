@@ -134,7 +134,6 @@ function update() {
     if(random() < percentConverted) {
       if(random() < 0.5) dampeners[religion].wordOfMouth += 0.001
       else dampeners[religion].media += 0.001
-      console.log(dampeners[religion])
     }
     if(percentConverted > 0.4) {
       dampeners[religion].deconversion += floor(random(1, 3))
@@ -154,8 +153,7 @@ function update() {
       convertedStates.push(states[i])
     }
   }
-  if(converts !== totalConverts) blessings++
-  //blessings += ceil(map(converts, 0, totalPopulation, converts, 1)*map(converts-totalConverts, 0, totalPopulation-totalConverts, 0, 1))
+  if(converts > totalConverts) blessings++
   totalConverts = converts
 
   updateInfoBar()
