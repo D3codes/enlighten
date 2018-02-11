@@ -395,6 +395,15 @@ function keyPressed() {
 }
 
 function mouseClicked() {
+  if(game_state === 'new') {
+    if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
+      mouseX > window.innerWidth/2-150 && mouseX < window.innerWidth/2+150){
+        game_state = 'start'
+        return
+      }
+    return
+  }
+
   if(mouseY < window.innerHeight && mouseY > window.innerHeight - 100) {
     if(mouseX < 4*window.innerWidth/5 + 200 && mouseX > 4*window.innerWidth/5 - 200) {
       if(game_state === 'start' || game_state === 'play') last_state = game_state
@@ -406,14 +415,6 @@ function mouseClicked() {
       game_state = 'religion'
       return
     }
-  }
-
-  if(game_state === 'new') {
-    if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
-      mouseX > window.innerWidth/2-150 && mouseX < window.innerWidth/2+150){
-        game_state = 'start'
-        return
-      }
   }
 
   if(game_state === 'stateInfo') {
