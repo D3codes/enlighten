@@ -284,8 +284,8 @@ function updatePopup() {
       for(let resist in resists) {
         polygon(resists[resist].x, resists[resist].y, 40, 8, resists[resist].state)
         let hoverOver = false
-        if(mouseX < resists[resist].x+40+window.innerWidth/2-400 && mouseX > resists[resist].x-40+window.innerWidth/2-400 &&
-          mouseY < resists[resist].y+window.innerHeight/2-250 && mouseY > resists[resist].y-80+window.innerHeight/2-250) {
+        if(mouseX < resists[resist].x+40+window.innerWidth/2-this.popup.width/2 && mouseX > resists[resist].x-40+window.innerWidth/2-this.popup.width/2 &&
+          mouseY < resists[resist].y+40+window.innerHeight/2-this.popup.height/2 && mouseY > resists[resist].y-40+window.innerHeight/2-this.popup.height/2) {
             for(prereq of evangelism[method].prereqs) {
               hoverOver = true
             }
@@ -551,8 +551,8 @@ function mouseClicked() {
       }
     } else if(game_state === 'resistances') {
         for(resist in resists) {
-          if(mouseX < resists[resist].x+40+window.innerWidth/2-400 && mouseX > resists[resist].x-40+window.innerWidth/2-400 &&
-            mouseY < resists[resist].y+window.innerHeight/2-250 && mouseY > resists[resist].y-80+window.innerHeight/2-250) {
+          if(mouseX < resists[resist].x+40+window.innerWidth/2-this.popup.width/2 && mouseX > resists[resist].x-40+window.innerWidth/2-this.popup.width/2 &&
+            mouseY < resists[resist].y+40+window.innerHeight/2-this.popup.height/2 && mouseY > resists[resist].y-40+window.innerHeight/2-this.popup.height/2) {
               if(resists[resist].state === 'available' && blessings >= resists[resist].cost) {
                 resists[resist].state = 'bought'
                 blessings -= resists[resist].cost
