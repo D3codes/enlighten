@@ -59,7 +59,7 @@
     "prereqs": ["Missionaries 1", "Radio 1"],
     "probOccur": 0.005,
     "probSpread": 0.0005,
-    "cost": 3000,
+    "cost": 2000,
     "x": 540,
     "y": 168
   },
@@ -67,7 +67,7 @@
     "prereqs": ["Missionaries 2", "Congregation 3", "Radio 2"],
     "probOccur": 0.01,
     "probSpread": 0.001,
-    "cost": 6000,
+    "cost": 3000,
     "x": 510,
     "y": 236
   },
@@ -123,15 +123,15 @@
     "prereqs": ["Radio 2"],
     "probOccur": 0.005,
     "probSpread": 0.035,
-    "cost": 3000,
+    "cost": 2000,
     "x": 510,
     "y": 374
   },
   "Televangelism 2": {
-    "prereqs": ["Televangelism 1", "Radio 3", "Print 3"],
+    "prereqs": ["Televangelism 1", "Radio 3"],
     "probOccur": 0.01,
     "probSpread": 0.04,
-    "cost": 5000,
+    "cost": 2500,
     "x": 579,
     "y": 345
   },
@@ -139,7 +139,7 @@
     "prereqs": ["Televangelism 2"],
     "probOccur": 0.02,
     "probSpread": 0.045,
-    "cost": 8000,
+    "cost": 4000,
     "x": 647,
     "y": 374
   },
@@ -147,7 +147,7 @@
     "prereqs": ["Missionaries 3", "Televangelism 3"],
     "probOccur": 0.001,
     "probSpread": 1,
-    "cost": 10000,
+    "cost": 6000,
     "x": 735,
     "y": 230
   }

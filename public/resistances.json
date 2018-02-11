@@ -7,24 +7,24 @@
     "state": "available"
   },
   "Christianity 2": {
-    "resistance": 0.35,
+    "resistance": 0.2,
     "x": 150,
     "y": 218,
     "cost": 500,
     "state": "unavailable"
   },
   "Christianity 3": {
-    "resistance": 0.1,
+    "resistance": 0.05,
     "x": 120,
     "y": 286,
     "cost": 1000,
     "state": "unavailable"
   },
   "Christianity 4": {
-    "resistance": 0.02,
+    "resistance": 0.003,
     "x": 150,
     "y": 354,
-    "cost": 1250,
+    "cost": 1500,
     "state": "unavailable"
   },
   "Judaism 1": {
@@ -35,24 +35,24 @@
     "state": "available"
   },
   "Judaism 2": {
-    "resistance": 0.35,
+    "resistance": 0.2,
     "x": 353,
     "y": 218,
     "cost": 500,
     "state": "unavailable"
   },
   "Judaism 3": {
-    "resistance": 0.1,
+    "resistance": 0.05,
     "x": 323,
     "y": 286,
     "cost": 1000,
     "state": "unavailable"
   },
   "Judaism 4": {
-    "resistance": 0.02,
+    "resistance": 0.003,
     "x": 353,
     "y": 354,
-    "cost": 1250,
+    "cost": 1500,
     "state": "unavailable"
   },
   "Islam 1": {
@@ -63,24 +63,24 @@
     "state": "available"
   },
   "Islam 2": {
-    "resistance": 0.35,
+    "resistance": 0.2,
     "x": 515,
     "y": 218,
     "cost": 500,
     "state": "unavailable"
   },
   "Islam 3": {
-    "resistance": 0.1,
+    "resistance": 0.05,
     "x": 485,
     "y": 286,
     "cost": 1000,
     "state": "unavailable"
   },
   "Islam 4": {
-    "resistance": 0.02,
+    "resistance": 0.003,
     "x": 515,
     "y": 354,
-    "cost": 1250,
+    "cost": 1500,
     "state": "unavailable"
   },
   "Scientology 1": {
@@ -91,24 +91,24 @@
     "state": "available"
   },
   "Scientology 2": {
-    "resistance": 0.35,
+    "resistance": 0.2,
     "x": 705,
     "y": 218,
     "cost": 500,
     "state": "unavailable"
   },
   "Scientology 3": {
-    "resistance": 0.1,
+    "resistance": 0.05,
     "x": 675,
     "y": 286,
     "cost": 1000,
     "state": "unavailable"
   },
   "Scientology 4": {
-    "resistance": 0.02,
+    "resistance": 0.003,
     "x": 705,
     "y": 354,
-    "cost": 1250,
+    "cost": 1500,
     "state": "unavailable"
   }
 }
