@@ -388,12 +388,16 @@ function keyPressed() {
   if(game_state === 'new') {
     if(keyCode === 8) {
       religionName = religionName.slice(0, religionName.length-1)
+    } else if(keyCode === 13) {
+      game_state = 'start'
     }
   }
 }
 
 function keyTyped() {
-  religionName += key
+  if(game_state === 'new') {
+    religionName += key
+  }
 }
 
 function mouseClicked() {
