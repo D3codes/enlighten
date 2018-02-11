@@ -130,9 +130,8 @@ function update() {
   let percentConverted = map(totalConverts, 0, totalPopulation, 0, 1)
   for(religion in dampeners) {
     if(random() < percentConverted) {
-      if(random() < 0.5) dampeners[religion].wordOfMouth += 0.001
-      else dampeners[religion].media += 0.001
-      console.log(dampeners[religion])
+      if(random() < 0.5 && dampeners[religion].wordOfMouth < 0.8) dampeners[religion].wordOfMouth += 0.001
+      else if(dampeners[religion].media < 0.8) dampeners[religion].media += 0.001
     }
     if(percentConverted > 0.4) {
       dampeners[religion].deconversion += floor(random(1, 3))
@@ -254,14 +253,39 @@ function updatePopup() {
       break;
 
     case 'heathens':
+      this.popup.background(220, 20, 20)
+      this.popup.textAlign(LEFT)
+      this.popup.textFont('IM Fell English SC')
+      this.popup.textSize(50)
+      this.popup.noStroke()
+      this.popup.fill(0)
+      this.popup.text('Heathens', 30, 50)
 
-    break
+      this.popup.textSize(30)
+      this.popup.text('Christians', 30, 150)
+      this.popup.text('Jews', 30, 250)
+      this.popup.text('Muslims', 30, 350)
+      this.popup.text('Scientologists', 30, 450)
+
+      this.popup.text('Gossip Control', 300, 100)
+      this.popup.text(`${dampeners.christianity.wordOfMouth.toFixed(4)}%`, 350, 150)
+      this.popup.text(`${dampeners.judaism.wordOfMouth.toFixed(4)}%`, 350, 250)
+      this.popup.text(`${dampeners.islam.wordOfMouth.toFixed(4)}%`, 350, 350)
+      this.popup.text(`${dampeners.scientology.wordOfMouth.toFixed(4)}%`, 350, 450)
+
+      this.popup.text('Media Control', 550, 100)
+      this.popup.text(`${dampeners.christianity.media.toFixed(4)}%`, 600, 150)
+      this.popup.text(`${dampeners.judaism.media.toFixed(4)}%`, 600, 250)
+      this.popup.text(`${dampeners.islam.media.toFixed(4)}%`, 600, 350)
+      this.popup.text(`${dampeners.scientology.media.toFixed(4)}%`, 600, 450)
+      break
 
     default:
       this.popup.background(255)
       return
   }
 
+  if(game_state === 'heathens') return
   this.popup.textFont('IM Fell English SC')
   this.popup.textSize(30)
   this.popup.noStroke()
