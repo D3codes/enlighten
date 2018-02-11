@@ -23,7 +23,6 @@ class State {
           case 1:
           case 3:
           case 4:
-            probSpread -= dampeners.christianity.media*resistances.christianity
             probSpread -= dampeners.judaism.media*resistances.judaism
             probSpread -= dampeners.islam.media*resistances.islam
             probSpread -= dampeners.scientology.media*resistances.scientology
