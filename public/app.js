@@ -81,6 +81,7 @@ let resistances = {
 }
 
 function setup() {
+  pixelDensity(1)
   let container = createDiv('')
   container.id('map')
   container.style('width', `${window.innerWidth}`)
@@ -151,6 +152,7 @@ function update() {
   }
   if(converts > totalConverts) {
     blessings++
+    if(random() > 0.98) blessings += floor(random(3))
     let percentConverted = map(totalConverts, 0, totalPopulation, 0, 1)
     for(religion in dampeners) {
       if(random() < percentConverted) {
