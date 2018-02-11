@@ -250,7 +250,19 @@ function updateInfoBar() {
   this.infoBar.rect(4*window.innerWidth/5, 40, 100, 50)
   this.infoBar.textAlign(CENTER, CENTER)
   this.infoBar.fill(0, 0, 0)
+  if(mouseY < window.innerHeight && mouseY > window.innerHeight - 100) {
+    if(mouseX < window.innerWidth/5 + 100 && mouseX > window.innerWidth/5 - 100) {
+      this.infoBar.fill(255)
+    }
+  }
   this.infoBar.text('Enlighten', window.innerWidth/5, 40)
+
+  this.infoBar.fill(0, 0, 0)
+  if(mouseY < window.innerHeight && mouseY > window.innerHeight - 100) {
+    if(mouseX < 4*window.innerWidth/5 + 100 && mouseX > 4*window.innerWidth/5 - 100) {
+      this.infoBar.fill(255)
+    }
+  }
   this.infoBar.text('Heathens', 4*window.innerWidth/5, 40)
 }
 
@@ -483,6 +495,7 @@ function updatePopup() {
   }
 
   if(game_state === 'heathens' || game_state === 'stateInfo' || game_state === 'new' || game_state === 'win' || game_state === 'lose') return
+
   this.popup.textFont('IM Fell English SC')
   this.popup.textSize(30)
   this.popup.noStroke()
@@ -494,9 +507,31 @@ function updatePopup() {
   this.popup.rect(2*popup.width/3, popup.height-50, popup.width/3, 50)
   this.popup.fill(0)
   this.popup.textAlign(CENTER, CENTER)
+
+  this.popup.fill(0)
+  if(mouseY < window.innerHeight/2+this.popup.height/2 && mouseY > window.innerHeight/2+this.popup.height/2-50) {
+    if(mouseX < window.innerWidth/2+this.popup.width/2-2*this.popup.width/3 && mouseX > window.innerWidth/2-this.popup.width/2) {
+      this.popup.fill(255)
+    }
+  }
   this.popup.text("Religion", this.popup.width/2 - this.popup.width/3, this.popup.height - 25)
+
+  this.popup.fill(0)
+  if(mouseY < window.innerHeight/2+this.popup.height/2 && mouseY > window.innerHeight/2+this.popup.height/2-50) {
+    if(mouseX < window.innerWidth/2+this.popup.width/2-this.popup.width/3 && mouseX > window.innerWidth/2+this.popup.width/2 - 2*this.popup.width/3) {
+      this.popup.fill(255)
+    }
+  }
   this.popup.text("Evangelism", this.popup.width/2, this.popup.height - 25)
+
+  this.popup.fill(0)
+  if(mouseY < window.innerHeight/2+this.popup.height/2 && mouseY > window.innerHeight/2+this.popup.height/2-50) {
+    if(mouseX < window.innerWidth/2+this.popup.width/2 && mouseX > window.innerWidth/2+this.popup.width/2 - this.popup.width/3) {
+      this.popup.fill(255)
+    }
+  }
   this.popup.text("Resistances", this.popup.width/2 + this.popup.width/3, this.popup.height - 25)
+  this.popup.fill(0)
 }
 
 let maxNameLength = 30
