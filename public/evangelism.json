@@ -5,7 +5,8 @@
     "probSpread": 0.000001,
     "cost": 0,
     "x": 60,
-    "y": 110
+    "y": 110,
+    "upgradeMessage": "^"
   },
   "Congregation 2": {
     "prereqs": ["Congregation 1"],
@@ -13,7 +14,8 @@
     "probSpread": 0.000006,
     "cost": 5,
     "x": 90,
-    "y": 178
+    "y": 178,
+    "upgradeMessage": "^"
   },
   "Congregation 3": {
     "prereqs": ["Door to Door 3", "Congregation 2"],
@@ -21,7 +23,8 @@
     "probSpread": 0.0035,
     "cost": 1200,
     "x": 120,
-    "y": 246
+    "y": 246,
+    "upgradeMessage": "^"
   },
   "Door to Door 1": {
     "prereqs": ["Congregation 1"],
@@ -29,7 +32,8 @@
     "probSpread": 0.0001,
     "cost": 20,
     "x": 255,
-    "y": 60
+    "y": 60,
+    "upgradeMessage": "^"
   },
   "Door to Door 2": {
     "prereqs": ["Door to Door 1"],
@@ -37,7 +41,8 @@
     "probSpread": 0.0005,
     "cost": 150,
     "x": 285,
-    "y": 128
+    "y": 128,
+    "upgradeMessage": "^"
   },
   "Door to Door 3": {
     "prereqs": ["Door to Door 2", "Congregation 2"],
@@ -45,7 +50,8 @@
     "probSpread": 0.0015,
     "cost": 800,
     "x": 353,
-    "y": 157
+    "y": 157,
+    "upgradeMessage": "^"
   },
   "Missionaries 1": {
     "prereqs": ["Door to Door 3"],
@@ -53,7 +59,8 @@
     "probSpread": 0.00035,
     "cost": 1500,
     "x": 510,
-    "y": 100
+    "y": 100,
+    "upgradeMessage": "^"
   },
   "Missionaries 2": {
     "prereqs": ["Missionaries 1", "Radio 1"],
@@ -61,7 +68,8 @@
     "probSpread": 0.0005,
     "cost": 2000,
     "x": 540,
-    "y": 168
+    "y": 168,
+    "upgradeMessage": "^"
   },
   "Missionaries 3": {
     "prereqs": ["Missionaries 2", "Congregation 3", "Radio 2"],
@@ -69,7 +77,8 @@
     "probSpread": 0.001,
     "cost": 3000,
     "x": 510,
-    "y": 236
+    "y": 236,
+    "upgradeMessage": "^"
   },
   "Print 1": {
     "prereqs": ["Door to Door 2"],
@@ -77,7 +86,8 @@
     "probSpread": 0.0003,
     "cost": 300,
     "x": 57,
-    "y": 374
+    "y": 374,
+    "upgradeMessage": "^"
   },
   "Print 2": {
     "prereqs": ["Print 1"],
@@ -85,7 +95,8 @@
     "probSpread": 0.001,
     "cost": 1000,
     "x": 125,
-    "y": 404
+    "y": 404,
+    "upgradeMessage": "^"
   },
   "Print 3": {
     "prereqs": ["Print 2", "Missionaries 1"],
@@ -93,7 +104,8 @@
     "probSpread": 0.005,
     "cost": 1800,
     "x": 194,
-    "y": 375
+    "y": 375,
+    "upgradeMessage": "^"
   },
   "Radio 1": {
     "prereqs": ["Print 2"],
@@ -101,7 +113,8 @@
     "probSpread": 0.0065,
     "cost": 1000,
     "x": 300,
-    "y": 280
+    "y": 280,
+    "upgradeMessage": "^"
   },
   "Radio 2": {
     "prereqs": ["Radio 1", "Print 3"],
@@ -109,7 +122,8 @@
     "probSpread": 0.01,
     "cost": 1800,
     "x": 369,
-    "y": 308
+    "y": 308,
+    "upgradeMessage": "^"
   },
   "Radio 3": {
     "prereqs": ["Radio 2"],
@@ -117,7 +131,8 @@
     "probSpread": 0.05,
     "cost": 2200,
     "x": 341,
-    "y": 377
+    "y": 377,
+    "upgradeMessage": "^"
   },
   "Televangelism 1": {
     "prereqs": ["Radio 2"],
@@ -125,7 +140,8 @@
     "probSpread": 0.035,
     "cost": 2000,
     "x": 510,
-    "y": 374
+    "y": 374,
+    "upgradeMessage": "^"
   },
   "Televangelism 2": {
     "prereqs": ["Televangelism 1", "Radio 3"],
@@ -133,7 +149,8 @@
     "probSpread": 0.04,
     "cost": 2500,
     "x": 579,
-    "y": 345
+    "y": 345,
+    "upgradeMessage": "^"
   },
   "Televangelism 3": {
     "prereqs": ["Televangelism 2"],
@@ -141,7 +158,8 @@
     "probSpread": 0.045,
     "cost": 4000,
     "x": 647,
-    "y": 374
+    "y": 374,
+    "upgradeMessage": "^"
   },
   "Divine Revelation": {
     "prereqs": ["Missionaries 3", "Televangelism 3"],
@@ -149,6 +167,7 @@
     "probSpread": 1,
     "cost": 6000,
     "x": 735,
-    "y": 230
+    "y": 230,
+    "upgradeMessage": "^"
   }
 }
