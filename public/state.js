@@ -23,6 +23,7 @@ class State {
           case 1:
           case 3:
           case 4:
+            probSpread -= dampeners.christianity.media*resistances.christianity
             probSpread -= dampeners.judaism.media*resistances.judaism
             probSpread -= dampeners.islam.media*resistances.islam
             probSpread -= dampeners.scientology.media*resistances.scientology
@@ -37,7 +38,10 @@ class State {
             break
         }
 
-        people += ceil(random(map(this.converted / probSpread, 0, this.population / probSpread, 1, this.population - this.converted)))
+        let s = ceil(random(this.population * probSpread))
+        if(s + this.converted > this.population) s = this.population - this.converted
+        people += s
+        //people += ceil(random(map(this.converted / probSpread, 0, this.population / probSpread, 1, this.population - this.converted)))
       }
     }
     this.converted += people
@@ -50,5 +54,6 @@ class State {
     this.converted = ceil(this.converted/totalDeconversion)
 
     if(this.converted > this.population) this.converted = this.population
+    if(this.coverted < this.population) this.converted = 0
   }
 }

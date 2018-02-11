@@ -42,8 +42,8 @@ let methods = [
   },
   {
     method: "Congregation",
-    probOccur: 0.21,
-    probSpread: 0.15
+    probOccur: 0,
+    probSpread: 0
   }
 ]
 
@@ -116,6 +116,8 @@ function setup() {
     }
     evangelism['Congregation 1'].state = 'bought'
     setMethodStates(evangelism)
+    methods[6].probOccur = evangelism['Congregation 1'].probOccur
+    methods[6].probSpread = evangelism['Congregation 1'].probSpread
   })
 }
 
@@ -151,7 +153,7 @@ function update() {
       convertedStates.push(states[i])
     }
   }
-  blessings += ceil(map(converts, 0, totalPopulation, converts, 1)*map(converts-totalConverts, 0, totalPopulation-totalConverts, 0, 1))
+  if(converts > totalConverts) blessings++
   totalConverts = converts
 
   updateInfoBar()
