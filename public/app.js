@@ -386,12 +386,14 @@ function updatePopup() {
 
 function keyPressed() {
   if(game_state === 'new') {
-    if(keyCode !== 8) {
-      religionName += key
-    } else {
+    if(keyCode === 8) {
       religionName = religionName.slice(0, religionName.length-1)
     }
   }
+}
+
+function keyTyped() {
+  religionName += key
 }
 
 function mouseClicked() {
