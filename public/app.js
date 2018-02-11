@@ -231,7 +231,7 @@ function updateInfoBar() {
   this.infoBar.rect(4*window.innerWidth/5, 40, 100, 50)
   this.infoBar.textAlign(CENTER, CENTER)
   this.infoBar.fill(0, 0, 0)
-  this.infoBar.text('Religion', window.innerWidth/5, 40)
+  this.infoBar.text('Enlighten', window.innerWidth/5, 40)
   this.infoBar.text('Heathens', 4*window.innerWidth/5, 40)
 }
 
@@ -376,7 +376,12 @@ function updatePopup() {
 
       this.popup.fill(51)
       this.popup.rect(300, 400, 200, 50)
-      this.popup.fill(255)
+      if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
+        mouseX > window.innerWidth/2-100 && mouseX < window.innerWidth/2+100) {
+          this.popup.fill(220, 220, 0)
+      } else {
+        this.popup.fill(255)
+      }
       this.popup.text('Close', 400, 430)
       break
 
@@ -402,7 +407,12 @@ function updatePopup() {
 
       this.popup.fill(51)
       this.popup.rect(250, 400, 300, 50)
-      this.popup.fill(255)
+      if(mouseY > window.innerHeight/2+this.popup.height/2 - 100  && mouseY < window.innerHeight/2+this.popup.height/2-50 &&
+        mouseX > window.innerWidth/2-150 && mouseX < window.innerWidth/2+150 && religionName.length > 0) {
+          this.popup.fill(220, 220, 0)
+        } else {
+          this.popup.fill(255)
+        }
       this.popup.text('Continue', 400, 430)
 
       this.popup.textSize(20)
